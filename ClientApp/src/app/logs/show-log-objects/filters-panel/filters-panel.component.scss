@@ -1,19 +1,15 @@
 mat-card {
-    padding: 2px !important;
+	padding: 2px !important;
+	
+	.action-button {
+	
+		.selected {
+			background-color: #d8d8d8;
+		}
 
-    .toggle-button {
-
-        .mat-button-toggle-label-content {
-            line-height: 0 !important;
-            padding: 5px !important;
-        }
-    }
-    
-    .action-button {
-    
-        button {
-            min-width: unset !important;
-            padding: 0 5px !important;
-        }
-    }
+		button {
+			min-width: unset !important;
+			padding: 0 5px !important;
+		}
+	}
 }

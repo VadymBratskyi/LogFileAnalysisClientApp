@@ -4,14 +4,14 @@ import { ShowLogObjectsComponent } from './show-log-objects.component';
 
 
 const routes: Routes = [
-  {
-    path: "",
-    component: ShowLogObjectsComponent
-  }
+	{
+		path: "",
+		component: ShowLogObjectsComponent
+	}
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule]
 })
 export class ShowLogObjectsRoutingModule { }

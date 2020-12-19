@@ -11,7 +11,6 @@ import { NewQueryDialogComponent } from '../new-query-dialog/new-query-dialog.co
 	selector: 'app-filters-panel',
 	templateUrl: './filters-panel.component.html',
 	styleUrls: ['./filters-panel.component.scss'],
-	encapsulation: ViewEncapsulation.None
 })
 export class FiltersPanelComponent implements OnInit {
 

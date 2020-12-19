@@ -1,17 +1,25 @@
 .mat-card {
-    padding: 10px;
+	padding: 10px;
 }
 
 .padd-title-header {
-    font-size: 16px;
-    margin-bottom: 3px !important;
+	font-size: 16px;
+	margin-bottom: 3px !important;
 }
 
-.linkText:hover {
-    cursor: pointer;
-    text-decoration: underline;
+.link-text:hover {
+	cursor: pointer;
+	text-decoration: underline;
 }
 
-.matBadg {
-    padding-left: 12px;
+table {
+	width: 100%;
+}
+
+tr.mat-row {
+	height: 35px;
+}
+
+tr.mat-header-row {
+	height: 30px;
 }

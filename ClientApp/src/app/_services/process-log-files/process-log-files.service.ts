@@ -5,90 +5,85 @@ import { environment } from 'environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { FileProcess, LogNotify, OfferNotify } from '@log_models';
-
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class ProcessLogFilesService {
 
-  public processingFiles: Array<FileProcess>;
-  private _hubConnection: HubConnection; 
+	public processingFiles: Array<FileProcess>;
+	private _hubConnection: HubConnection; 
 
-  onProcessNotification = new EventEmitter<LogNotify>();
-  onOfferNotification = new EventEmitter<OfferNotify>();
+	onProcessNotification = new EventEmitter<LogNotify>();
+	onOfferNotification = new EventEmitter<OfferNotify>();
 
-  constructor(
-    private http: HttpClient
-  ) {  }
+	constructor(
+		private http: HttpClient
+	) {  }
 
-  public CreateProcessLogSession() : Observable<string>  {
+	private _createConnection() {  
+		this._hubConnection = new HubConnectionBuilder()  
+			.withUrl(environment.localhostApp + 'ProcessLogFileHub')  
+			.build();  
+	}  
 
-    const url = environment.localhostApp + environment.urlProcessLogApi + environment.methodCreateProcessLogSession;
+	private _registerOnLogServerEvents(): void {  
+		this._hubConnection.on('ProcessNotification', (data: any) => {  
+			this.onProcessNotification.emit(data);  
+		});  
+	}
 
-    var user = {
-      UserName: 'Vados'
-    };
+	private _registerOnOfferServerEvents(): void {  
+		this._hubConnection.on('OfferNotification', (data: any) => {  
+			this.onOfferNotification.emit(data);  
+		});  
+	}  
 
-    return this.http.post(url, user)
-      .pipe(
-        map((sessionId: string) => sessionId),
-        catchError((error: HttpErrorResponse) => {
-          console.error('CreateProcessLogSession: ', error);       
-          return throwError(error);
-        })
-      );
+	private _startConnection(): void {  
+		this._hubConnection  
+			.start()
+			.then(() => {  
+				console.log('Hub connection started');  
+			})  
+			.catch(err => {  
+				console.log('Error while establishing connection, retrying...');  
+				setTimeout(function () { this.startConnection(); }, 5000);  
+			});  
+	}
 
-  }
+	public CreateProcessLogSession() : Observable<string>	{
+		const url = environment.localhostApp + environment.urlProcessLogApi + environment.methodCreateProcessLogSession;
+		var user = {
+			UserName: 'Vados'
+		};
+		return this.http.post(url, user)
+			.pipe(
+			map((sessionId: string) => sessionId),
+			catchError((error: HttpErrorResponse) => {
+				console.error('CreateProcessLogSession: ', error);       
+				return throwError(error);
+			})
+			);
+	}
 
-  startProcessSinglLogFile(fileName: string) {    
-    this._hubConnection.invoke('StartProcessSinglLogFiles', fileName);  
-  }  
+	public startProcessSinglLogFile(fileName: string) {    
+		this._hubConnection.invoke('StartProcessSinglLogFiles', fileName);  
+	}  
 
-  startProcessLogFiles(sessionId: string) {    
-    this._hubConnection.invoke('StartProcessLogFiles', sessionId);  
-  }  
-  
-  startHubConnection() {
-    this.createConnection();
-    this.registerOnLogServerEvents();
-    this.registerOnOfferServerEvents(); 
-    this.startConnection(); 
-    this.processingFiles = [];
-  }
+	public startProcessLogFiles(sessionId: string) {    
+		this._hubConnection.invoke('StartProcessLogFiles', sessionId);  
+	}  
 
-  stopHubConnection() {
-    this._hubConnection.stop();
-    console.log("HUB Connection stoped");
-  }
+	public startHubConnection() {
+		this._createConnection();
+		this._registerOnLogServerEvents();
+		this._registerOnOfferServerEvents(); 
+		this._startConnection(); 
+		this.processingFiles = [];
+	}
 
-  private createConnection() {  
-    this._hubConnection = new HubConnectionBuilder()  
-      .withUrl(environment.localhostApp + 'ProcessLogFileHub')  
-      .build();  
-  }  
-  
-  private registerOnLogServerEvents(): void {  
-    this._hubConnection.on('ProcessNotification', (data: any) => {  
-      this.onProcessNotification.emit(data);  
-    });  
-  }
+	public stopHubConnection() {
+		this._hubConnection.stop();
+		console.log("HUB Connection stoped");
+	}
 
-  private registerOnOfferServerEvents(): void {  
-    this._hubConnection.on('OfferNotification', (data: any) => {  
-      this.onOfferNotification.emit(data);  
-    });  
-  }  
-
-  private startConnection(): void {  
-    this._hubConnection  
-      .start()  
-      .then(() => {  
-        console.log('Hub connection started');  
-      })  
-      .catch(err => {  
-        console.log('Error while establishing connection, retrying...');  
-        setTimeout(function () { this.startConnection(); }, 5000);  
-      });  
-  }  
-  
 }
