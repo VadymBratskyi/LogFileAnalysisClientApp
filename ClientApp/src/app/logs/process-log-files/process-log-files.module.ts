@@ -14,29 +14,32 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { OffersComponent } from './offers/offers.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { DetailsOfferDialogComponent } from './offers/details-offer-dialog/details-offer-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [
-    ProcessLogFilesComponent, 
-    UploaderFilesComponent, 
-    ProcessingLogComponent, OffersComponent
-  ],
-  imports: [
-    CommonModule,
-    ProcessLogFilesRoutingModule,
-    FormsModule,
-    
-    /**material */
-    MatCardModule,
-    MatButtonModule,
-    MatBadgeModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatTableModule,
-    MatPaginatorModule,
+	declarations: [
+		ProcessLogFilesComponent, 
+		UploaderFilesComponent, 
+		ProcessingLogComponent, OffersComponent, DetailsOfferDialogComponent
+	],
+	imports: [
+		CommonModule,
+		ProcessLogFilesRoutingModule,
+		FormsModule,
+		
+		/**material */
+		MatCardModule,
+		MatButtonModule,
+		MatDialogModule,
+		MatBadgeModule,
+		MatProgressSpinnerModule,
+		MatIconModule,
+		MatTableModule,
+		MatPaginatorModule,
 
-    /**progress */
-    UploadModule
-  ]
+		/**progress */
+		UploadModule
+	]
 })
 export class ProcessLogFilesModule { }

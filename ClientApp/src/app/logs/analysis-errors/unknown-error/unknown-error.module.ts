@@ -20,33 +20,32 @@ import { ErrorStatusesTreeComponent } from './unknown-error-settings/status-dial
 import { SelectedStatusComponent } from './unknown-error-settings/status-dialog/selected-status/selected-status.component';
 import { MatTreeModule } from '@angular/material/tree';
 
-
 @NgModule({
-  declarations: [
-    UnknownErrorComponent, 
-    UnknownErrorTableComponent, 
-    UnknownErrorSettingsComponent,
-    StatusDialogComponent,
-    ErrorStatusFormComponent,
-    ErrorStatusesTreeComponent,
-    SelectedStatusComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    UnknownErrorRoutingModule,
-    
-    /**material */
-    MatCardModule,
-    MatButtonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatProgressSpinnerModule,
-    MatDialogModule,
-    MatIconModule,
-    MatButtonModule,
-    MatInputModule,
-    MatTreeModule
-  ]
+	declarations: [
+		UnknownErrorComponent, 
+		UnknownErrorTableComponent, 
+		UnknownErrorSettingsComponent,
+		StatusDialogComponent,
+		ErrorStatusFormComponent,
+		ErrorStatusesTreeComponent,
+		SelectedStatusComponent
+	],
+	imports: [
+		CommonModule,
+		FormsModule,
+		UnknownErrorRoutingModule,
+		
+		/**material */
+		MatCardModule,
+		MatButtonModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatProgressSpinnerModule,
+		MatDialogModule,
+		MatIconModule,
+		MatButtonModule,
+		MatInputModule,
+		MatTreeModule
+	]
 })
 export class UnknownErrorModule { }
