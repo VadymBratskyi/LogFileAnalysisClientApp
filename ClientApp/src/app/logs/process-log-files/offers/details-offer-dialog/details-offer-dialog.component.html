@@ -4,8 +4,40 @@
 	<mat-dialog-content class="mat-typography">
 	<div class="row">
 		<div class="col-md-12">
-			lalal
+			<mat-form-field class="example-full-width">
+				<mat-label>Статус помилки</mat-label>
+				<input matInput [value]="data.statusCode" readonly="true">
+			</mat-form-field>
 		</div>
+	</div>
+	<div class="row">
+		<mat-accordion>
+			<mat-expansion-panel (opened)="errorPanelOpenState = true" (closed)="errorPanelOpenState = false">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						Помилка
+					</mat-panel-title>
+				</mat-expansion-panel-header>
+				<div>
+					<mat-form-field class="example-full-width">
+						<textarea matInput [value]="errorMessage" readonly="true"></textarea>
+					</mat-form-field>
+				</div>
+				</mat-expansion-panel>
+				<mat-expansion-panel (opened)="answersPanelOpenState = true"
+											(closed)="answersPanelOpenState = false">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						Варіанти рішень
+					</mat-panel-title>
+				</mat-expansion-panel-header>
+				<div>
+					<mat-form-field class="example-full-width">
+						<textarea matInput [value]="answerMessage" readonly="true"></textarea>
+					</mat-form-field>
+				</div>
+				</mat-expansion-panel>
+			</mat-accordion>
 	</div>
 	</mat-dialog-content>
 	<mat-dialog-actions align="end">

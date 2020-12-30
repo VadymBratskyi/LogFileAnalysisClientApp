@@ -4,14 +4,14 @@ import { ProcessLogFilesComponent } from './process-log-files.component';
 
 
 const routes: Routes = [
-  {
-    path: "",
-    component: ProcessLogFilesComponent
-  }
+	{
+		path: "",
+		component: ProcessLogFilesComponent
+	}
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule]
 })
 export class ProcessLogFilesRoutingModule { }

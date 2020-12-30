@@ -16,6 +16,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DetailsOfferDialogComponent } from './offers/details-offer-dialog/details-offer-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
 	declarations: [
@@ -36,6 +39,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 		MatProgressSpinnerModule,
 		MatIconModule,
 		MatTableModule,
+		MatInputModule,
+		MatFormFieldModule,
+		MatExpansionModule,
 		MatPaginatorModule,
 
 		/**progress */
