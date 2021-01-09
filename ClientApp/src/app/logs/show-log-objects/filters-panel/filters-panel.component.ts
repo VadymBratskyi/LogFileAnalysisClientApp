@@ -94,7 +94,7 @@ export class FiltersPanelComponent implements OnInit {
 	}
 
 	private convertDate(ruleValue: string): string {
-		let date = moment(ruleValue).format('DD/MM/YYYY');
+		let date = moment(ruleValue).format('DD-MM-YYYY');
 		return date;
 	}
 
