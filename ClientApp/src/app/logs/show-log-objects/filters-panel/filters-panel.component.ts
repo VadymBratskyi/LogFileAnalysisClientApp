@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LogQueryRules, LogQueryRuleSet, QueryConfig, QuerySettingsItem } from '@log_models';
+import { LogPropertyType, LogQueryRules, LogQueryRuleSet, QueryConfig, QuerySettingsItem } from '@log_models';
 import { ShowLogObjectsService } from '@log_services';
 import { QueryBuilderConfig } from 'angular2-query-builder';
+import * as moment from 'moment';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil, mergeMap } from 'rxjs/operators';
 import { NewQueryDialogComponent } from '../new-query-dialog/new-query-dialog.component';
@@ -85,11 +86,25 @@ export class FiltersPanelComponent implements OnInit {
 			return conf ? {
 				field: rule.field,
 				operator: rule.operator,
-				value: rule.value.toString(),
+				value: this.converData(conf.propertyType, rule.value.toString()),
 				objectType: conf.objectType,
 				propertyType: conf.propertyType,
 			} as LogQueryRules : null;
 		});
+	}
+
+	private convertDate(ruleValue: string): string {
+		let date = moment(ruleValue).format('DD/MM/YYYY');
+		return date;
+	}
+
+	private converData(type: LogPropertyType, value: string) {
+		switch(type) {
+			case LogPropertyType.date:
+				return this.convertDate(value);
+			default:
+				return value;
+		};
 	}
 
 	public ngOnInit() {

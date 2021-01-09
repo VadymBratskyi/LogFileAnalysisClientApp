@@ -65,7 +65,7 @@ export class ProcessLogFilesService {
 			);
 	}
 
-	public startProcessSinglLogFile(fileName: string) {    
+	public startProcessSinglLogFile(fileName: string) {
 		this._hubConnection.invoke('StartProcessSinglLogFiles', fileName);  
 	}  
 

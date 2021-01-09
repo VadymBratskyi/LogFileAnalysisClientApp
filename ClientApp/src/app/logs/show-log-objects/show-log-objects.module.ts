@@ -23,32 +23,32 @@ import { NewQueryDialogComponent } from './new-query-dialog/new-query-dialog.com
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    ShowLogObjectsComponent,
-    FiltersPanelComponent,
-    LogObjectsTableComponent, NewQueryDialogComponent
-  ],
-  imports: [
-	 CommonModule,
-	 FormsModule,
-    ShowLogObjectsRoutingModule,
-    LogQueryBuilderModule,
-    LogTreeTableModule,
+	declarations: [
+		ShowLogObjectsComponent,
+		FiltersPanelComponent,
+		LogObjectsTableComponent, NewQueryDialogComponent
+	],
+	imports: [
+		CommonModule,
+		FormsModule,
+		ShowLogObjectsRoutingModule,
+		LogQueryBuilderModule,
+		LogTreeTableModule,
 
-    /**material*/
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatTreeModule,
-    MatCheckboxModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTableModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule
-  ]
+		/**material*/
+		MatButtonModule,
+		MatButtonToggleModule,
+		MatCardModule,
+		MatIconModule,
+		MatTooltipModule,
+		MatTreeModule,
+		MatCheckboxModule,
+		MatDialogModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatTableModule,
+		MatProgressSpinnerModule,
+		MatPaginatorModule
+	]
 })
 export class ShowLogObjectsModule { }

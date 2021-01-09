@@ -76,6 +76,7 @@ export class LogObjectsTableComponent implements OnInit, OnDestroy {
 		}
 		return treeModels;
 	}
+
 	public ngOnInit(): void {
 		this.showLogObjectsService.loadDataWithFilter
 			.pipe(takeUntil(this._destroyed$))
