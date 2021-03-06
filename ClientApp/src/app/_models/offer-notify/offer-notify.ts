@@ -1,5 +1,5 @@
-import { Offer } from './offer';
-
 export class OfferNotify {
-	offerMessages: Offer[];
+	public statusCode: number;
+	public errorMessage: string;
+	public answerMessage: string;
 }

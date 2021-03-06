@@ -1,33 +1,34 @@
 import { Injectable } from '@angular/core';
-import { LogNotify, OfferNotify } from '@log_models';
+import { LogNotify, OfferNotify, ProcessLogNotify, ProcessNotify } from '@log_models';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class NotificationsService {
 
-	private _processNotifications: LogNotify[] = [];
-	private _offerNotification: OfferNotify;
-	
-	public get processedFileNotification(): LogNotify[] {
-		return this._processNotifications;
+	private processedFileNotife = new BehaviorSubject(null);
+	private offerNotife = new BehaviorSubject(null);
+
+	public get processedFileNotification(): Observable<ProcessLogNotify> {
+		return this.processedFileNotife.asObservable();
 	}
 
-	public get offerNotification(): OfferNotify {
-		return this._offerNotification;
+	public get offerNotification(): Observable<OfferNotify[]> {
+		return this.offerNotife.asObservable();
 	}
 
-	public set offerNotification(value: OfferNotify) {
-		this._offerNotification = value;
+	public addProcessLogNotify(logNotify: ProcessLogNotify) {
+		this.processedFileNotife.next(logNotify);
 	}
 
-	public addProcessLogNotify(logNotify: LogNotify) {
-		this._processNotifications.push(logNotify);
+	public addOfferNotify(offers: OfferNotify[]) {
+		this.offerNotife.next(offers);
 	}
 
 	public deleProcessLogNotify(fileName: string) {
-		let notifyIndex = this._processNotifications.findIndex(nt => nt.fileName == fileName);
-		if(notifyIndex >= 0) {
-			this._processNotifications.splice(notifyIndex, 1);
-		}
+		const fileNotify = new ProcessLogNotify();
+		fileNotify.procesNotify = ProcessNotify.delete;
+		fileNotify.processLogNotify = { fileName: fileName } as LogNotify;
+		this.processedFileNotife.next(fileNotify);
 	}
 
 }

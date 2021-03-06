@@ -6,7 +6,7 @@
 		</mat-card-header>
 		<mat-card-content [style.display]="isProcessCardExpanded ? 'none' : 'block'">
 			<ul>
-				<li *ngFor="let notification of notifications">
+				<li *ngFor="let notification of complatedFiles">
 					<label >{{notification.message}}</label>
 				</li>
 			</ul>             

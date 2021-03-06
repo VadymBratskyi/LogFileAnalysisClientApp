@@ -13,8 +13,8 @@ export class ProcessLogFilesService {
 	public processingFiles: Array<FileProcess>;
 	private _hubConnection: HubConnection; 
 
-	onProcessNotification = new EventEmitter<LogNotify>();
-	onOfferNotification = new EventEmitter<OfferNotify>();
+	public onProcessNotification = new EventEmitter<LogNotify>();
+	public onOfferNotification = new EventEmitter<OfferNotify[]>();
 
 	constructor(
 		private http: HttpClient

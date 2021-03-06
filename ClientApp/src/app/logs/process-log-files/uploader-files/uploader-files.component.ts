@@ -59,7 +59,7 @@ export class UploaderFilesComponent implements OnChanges, OnDestroy {
 		e.files.forEach(file => {
 			let flIndex = this.servProcessLogFiles.processingFiles.findIndex(pr => pr.uploadedFile.uid == file.uid);
 			if(flIndex >= 0) {
-			this.servProcessLogFiles.processingFiles.splice(flIndex, 1);
+				this.servProcessLogFiles.processingFiles.splice(flIndex, 1);
 			}
 			this.servNotifications.deleProcessLogNotify(file.name);
 		});

@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { OfferNotify } from '@log_models';
 @Component({
 	selector: 'app-details-offer-dialog',
 	templateUrl: './details-offer-dialog.component.html',
@@ -11,7 +12,7 @@ export class DetailsOfferDialogComponent {
 	answersPanelOpenState = false;
 
 	constructor(
-		@Inject(MAT_DIALOG_DATA) public data: any) {}
+		@Inject(MAT_DIALOG_DATA) public data: OfferNotify) {}
 
 	get errorMessage() {
 		return this.data?.errorMessage;

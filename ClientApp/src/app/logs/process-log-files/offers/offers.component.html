@@ -1,14 +1,14 @@
 <mat-card class="example-card">
 	<mat-card-header>
 		<mat-card-title class="padd-title-header link-text" (click)="isProcessCardExpanded = !isProcessCardExpanded">
-			Можливі рішення для знайдених помилок {{offerMessages.length == 0 ? 'не виявлено' : ''}}
+			Можливі рішення для знайдених помилок {{offersLength == 0 ? 'не виявлено' : ''}}
 		</mat-card-title>
 	</mat-card-header>
 	<mat-card-content [style.display]="isProcessCardExpanded ? 'none' : 'block'">
-	<div class="example-container mat-elevation-z8" *ngIf="offerMessages.length > 0">
+	<div class="example-container mat-elevation-z8" *ngIf="offersLength > 0">
 		<div class="example-table-container">
 			<table mat-table
-					[dataSource]="offerMessages" multiTemplateDataRows
+					[dataSource]="dataSource" multiTemplateDataRows
 					class="mat-elevation-z8" style="width: 100%;">
 
 					<ng-container matColumnDef="statusCode">
@@ -39,7 +39,7 @@
 					<tr mat-row *matRowDef="let row; columns: displayTableColumns;"></tr>
 			</table>
 		</div>  
-		<mat-paginator [length]="resultsLength" [pageSizeOptions]="pageSizeOptions" (page)="pageChanges($event)" showFirstLastButtons></mat-paginator>
+		<mat-paginator [length]="offersLength" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
 	</div>
 	
 	</mat-card-content> 
