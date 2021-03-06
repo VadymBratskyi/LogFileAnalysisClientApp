@@ -19,12 +19,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { UploadInfoDialogComponent } from './uploader-files/upload-info-dialog/upload-info-dialog.component';
 
 @NgModule({
 	declarations: [
 		ProcessLogFilesComponent, 
 		UploaderFilesComponent, 
-		ProcessingLogComponent, OffersComponent, DetailsOfferDialogComponent
+		ProcessingLogComponent, OffersComponent, DetailsOfferDialogComponent, UploadInfoDialogComponent
 	],
 	imports: [
 		CommonModule,

@@ -4,6 +4,8 @@ import { environment } from 'environments/environment';
 import { SuccessEvent, SelectEvent, RemoveEvent, FileRestrictions } from '@progress/kendo-angular-upload';
 import { ReplaySubject } from 'rxjs';
 import { FileProcess, ProcessState } from '@log_models';
+import { MatDialog } from '@angular/material/dialog';
+import { UploadInfoDialogComponent } from './upload-info-dialog/upload-info-dialog.component';
 
 @Component({
 	selector: 'app-uploader-files',
@@ -23,6 +25,7 @@ export class UploaderFilesComponent implements OnChanges, OnDestroy {
 	};
 
 	constructor(
+		public dialog: MatDialog,
 		public servNotifications: NotificationsService,
 		public servProcessLogFiles: ProcessLogFilesService
 	) { }
@@ -66,7 +69,11 @@ export class UploaderFilesComponent implements OnChanges, OnDestroy {
 	}
 
 	onShowDetailsError(procFile: FileProcess) {
-		alert(procFile.errorMessage);
+		this.dialog.open(UploadInfoDialogComponent, {
+			data: {
+				errorMessage: procFile.errorMessage
+			} 
+		});
 	}
 
 	onRunProcessFiles() {
