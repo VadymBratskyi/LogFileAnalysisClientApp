@@ -5,7 +5,7 @@ import { ShowLogObjectsComponent } from './show-log-objects.component';
 
 const routes: Routes = [
 	{
-		path: "",
+		path: '',
 		component: ShowLogObjectsComponent
 	}
 ];

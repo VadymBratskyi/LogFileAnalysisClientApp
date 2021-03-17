@@ -34,7 +34,7 @@ export class LayoutComponent implements OnInit {
     this.servProcessLogFiole.CreateProcessLogSession()
       .pipe(takeUntil(this.destroyed$))
       .subscribe(sessionId => {
-        this.router.navigate(["/process-log-files", sessionId]);
+        this.router.navigate(['/process-log-files', sessionId]);
     });
   }
 

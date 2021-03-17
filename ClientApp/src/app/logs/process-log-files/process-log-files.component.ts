@@ -30,7 +30,7 @@ export class ProcessLogFilesComponent implements OnInit, OnDestroy {
 		this.servProcessLogFiles.onProcessNotification
 		.pipe(takeUntil(this.destroyed$))
 		.subscribe((logNotify: LogNotify) => {
-			if(logNotify) {
+			if (logNotify) {
 				this._complateProcesFile(logNotify.fileName);
 				const processLogNotify = new ProcessLogNotify();
 				processLogNotify.procesNotify = ProcessNotify.add;
@@ -44,24 +44,24 @@ export class ProcessLogFilesComponent implements OnInit, OnDestroy {
 		this.servProcessLogFiles.onOfferNotification
 		.pipe(takeUntil(this.destroyed$))
 		.subscribe((offers: OfferNotify[]) => {
-			if(offers.length > 0) {
+			if (offers.length > 0) {
 				this.isExistOffers = true;
 				this.servNotifications.addOfferNotify(offers);
 			}
-		}); 
+		});
 	}
 
 	private _complateProcesFile(fileName: string) {
 		this.isComplatedProcessFile = true;
-		let file = this.servProcessLogFiles.processingFiles.find(pr => pr.uploadedFile.name == fileName) as FileProcess;
+		const file = this.servProcessLogFiles.processingFiles.find(pr => pr.uploadedFile.name == fileName) as FileProcess;
 		file.processState = ProcessState.complate;
 	}
-	
+
 	public ngOnInit() {
 		this.activatedRoute.paramMap
 		.pipe(takeUntil(this.destroyed$))
 		.subscribe(p => {
-		this.sessionId = p.get("sessionId");
+		this.sessionId = p.get('sessionId');
 		this.servProcessLogFiles.startHubConnection();
 		});
 		this._progressAnalisysFiles();

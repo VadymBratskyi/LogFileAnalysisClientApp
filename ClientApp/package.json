@@ -29,7 +29,6 @@
 		"@progress/kendo-angular-upload": "^6.0.2",
 		"@progress/kendo-theme-default": "^4.23.0",
 		"angular2-query-builder": "^0.6.2",
-		"bootstrap": "^4.5.2",
 		"moment": "^2.29.1",
 		"rxjs": "~6.6.3",
 		"tslib": "^2.0.0",

@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  localhostApp: 'https://localhost:44396/',
+  localhostApp: 'https://localhost:8800/',
 
   urlProcessLogApi: 'api/ProcessLogFiles/',
   urlAnalysisLogApi: 'api/AnalysisLog/',

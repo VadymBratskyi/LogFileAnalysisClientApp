@@ -16,7 +16,7 @@ export class KnownErrorComponent implements OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private errorLogObjectsService: ErrorLogObjectsService
-  ) {     
+  ) {
     this.activatedRoute.data
       .pipe(takeUntil(this.destroyed$))
       .subscribe(p => {

@@ -12,18 +12,18 @@ export class ErrorStatusFormComponent {
   @Input() model: ErrorStatusesModel;
 
   @Output() addNewModel = new EventEmitter();
- 
+
   public keyWords: string;
 
   public get getSubstatusTitle() {
-    return this.model.subStatusTitle ? this.model.subStatusTitle : ''; 
+    return this.model.subStatusTitle ? this.model.subStatusTitle : '';
   }
 
   private processKeyWords() {
-    if(this.keyWords && this.keyWords.length > 0) {
-      let words = this.keyWords.split(' ');
+    if (this.keyWords && this.keyWords.length > 0) {
+      const words = this.keyWords.split(' ');
       this.model.keyWords = words;
-    }    
+    }
   }
 
   onSaveNewModel() {

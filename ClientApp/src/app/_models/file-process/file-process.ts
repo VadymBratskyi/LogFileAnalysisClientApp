@@ -7,9 +7,9 @@ export class FileProcess {
     public errorMessage: string;
     public sessionId: string;
 
-    constructor(options : {
-      sessionId: string,  
-      uploadedFile: FileInfo  
+    constructor(options: {
+      sessionId: string,
+      uploadedFile: FileInfo
     }) {
         this.uploadedFile = options.uploadedFile;
         this.processState = ProcessState.default;

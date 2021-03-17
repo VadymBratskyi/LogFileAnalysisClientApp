@@ -5,7 +5,7 @@ import { ProcessLogFilesComponent } from './process-log-files.component';
 
 const routes: Routes = [
 	{
-		path: "",
+		path: '',
 		component: ProcessLogFilesComponent
 	}
 ];

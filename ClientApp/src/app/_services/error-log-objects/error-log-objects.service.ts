@@ -24,7 +24,7 @@ export class ErrorLogObjectsService {
 	public getAllUnKnownErrorData(logTableModel: LogTableState): Observable<UnknownErrorDataGrid> {
 		const url = environment.localhostApp + environment.urlErrorLogApi + environment.methodGetAllUnKnownErrorData;
 		const body = new FilterParameters(logTableModel.skip, logTableModel.take);
-		return this.http.post(url, body)
+		return this.http.post(url, body, { withCredentials: true })
 		.pipe(
 			map((response: UnknownErrorDataGrid) => {
 				return response;

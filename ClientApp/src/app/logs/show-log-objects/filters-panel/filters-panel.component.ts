@@ -23,7 +23,7 @@ export class FiltersPanelComponent implements OnInit {
 	public config: QueryBuilderConfig = {
 		fields: {}
 	};
-	constructor(	
+	constructor(
 		private dialog: MatDialog,
 		public showLogObjectsService: ShowLogObjectsService
 	) { }
@@ -67,7 +67,7 @@ export class FiltersPanelComponent implements OnInit {
 	}
 
 	private _getQueryConfigs(queryItems: QuerySettingsItem[]): QueryConfig[] {
-		if(!queryItems) {
+		if (!queryItems) {
 			return [];
 		}
 		return queryItems.map(item => {
@@ -94,17 +94,17 @@ export class FiltersPanelComponent implements OnInit {
 	}
 
 	private convertDate(ruleValue: string): string {
-		let date = moment(ruleValue).format('DD-MM-YYYY');
+		const date = moment(ruleValue).format('DD-MM-YYYY');
 		return date;
 	}
 
 	private converData(type: LogPropertyType, value: string) {
-		switch(type) {
+		switch (type) {
 			case LogPropertyType.date:
 				return this.convertDate(value);
 			default:
 				return value;
-		};
+		}
 	}
 
 	public ngOnInit() {
@@ -132,7 +132,7 @@ export class FiltersPanelComponent implements OnInit {
 			takeUntil(this.destroyed$),
 			mergeMap((queryItems: QuerySettingsItem[]) => {
 			const queryConfigs = this._getQueryConfigs(queryItems);
-			return this.showLogObjectsService.addNewQueryDataConfig(queryConfigs)
+			return this.showLogObjectsService.addNewQueryDataConfig(queryConfigs);
 		}))
 		.subscribe((result: QuerySettingsItem[]) => {
 			this.onLoadData();

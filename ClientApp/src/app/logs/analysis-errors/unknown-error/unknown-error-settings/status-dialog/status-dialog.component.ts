@@ -35,10 +35,10 @@ export class StatusDialogComponent implements OnInit{
 		@Inject(MAT_DIALOG_DATA) public data: any) {}
 
 	private _initSubStatus(model: ErrorStatusesModel) {
-		if(model) {
+		if (model) {
 		this.newErrorStatusesModel.subStatusId = this.selectedItem.objetcId;
 		this.newErrorStatusesModel.subStatusTitle = this.selectedItem.title;
-		}  
+		}
 	}
 
 	private _createNewStatus() {
@@ -58,7 +58,7 @@ export class StatusDialogComponent implements OnInit{
 		.pipe(takeUntil(this.destroyed$))
 		.subscribe(res => {
 			this.errorStstusesData = res;
-		}); 
+		});
 	}
 
 	onNoClick(): void {
@@ -70,20 +70,20 @@ export class StatusDialogComponent implements OnInit{
 		this.showAddNewStatus = !this.showAddNewStatus;
 	}
 
-	onTreeSelectedItem(statusModel: ErrorStatusesModel) {    
+	onTreeSelectedItem(statusModel: ErrorStatusesModel) {
 			this.selectedItem = statusModel;
-			this._initSubStatus(this.newErrorStatusesModel);      
+			this._initSubStatus(this.newErrorStatusesModel);
 	}
 
 	onSaveNewStatus(newModel: ErrorStatusesModel) {
-		if(newModel) {
+		if (newModel) {
 			this.statusesErrorObjectsService.saveNewErrorStatusData(newModel)
 			.pipe(takeUntil(this.destroyed$))
       .subscribe(res => {
-			this.onLoadData(); 
-			}); 
+			this.onLoadData();
+			});
 		}
-		this.showAddNewStatus = false;    
+		this.showAddNewStatus = false;
 	}
 
 	ngOnDestroy() {

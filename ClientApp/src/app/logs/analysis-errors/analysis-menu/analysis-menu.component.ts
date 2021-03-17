@@ -7,7 +7,7 @@ import { ErrorLogObjectsService } from '@log_services';
   styleUrls: ['./analysis-menu.component.scss']
 })
 export class AnalysisMenuComponent {
- 
+
   public links = [
     {
       link: 'unknown-error',

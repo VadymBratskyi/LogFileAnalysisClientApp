@@ -8,7 +8,7 @@ import { ErrorStatusesTreeModel, ErrorStatusesModel } from '@log_models';
   templateUrl: './error-statuses-tree.component.html',
   styleUrls: ['./error-statuses-tree.component.scss']
 })
-export class ErrorStatusesTreeComponent { 
+export class ErrorStatusesTreeComponent {
 
   @Input() dataSource = new MatTreeNestedDataSource<ErrorStatusesTreeModel>();
 
@@ -18,8 +18,8 @@ export class ErrorStatusesTreeComponent {
 
   selectedNode: ErrorStatusesModel;
 
-  private _selectedItem(item: ErrorStatusesModel) {    
-    if(this.selectedNode) {
+  private _selectedItem(item: ErrorStatusesModel) {
+    if (this.selectedNode) {
       this.selectedNode.selected = false;
     }
     item.selected = true;

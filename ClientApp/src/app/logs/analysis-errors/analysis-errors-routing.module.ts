@@ -6,18 +6,18 @@ import { AnalysisErrorsComponent } from './analysis-errors.component';
 
 const routes: Routes = [
 {
-	path: "",
+	path: '',
 	component: AnalysisErrorsComponent,
 	children: [
 	{
-		path: "unknown-error",
+		path: 'unknown-error',
 		loadChildren: () => import('./unknown-error/unknown-error.module').then(o => o.UnknownErrorModule),
-		data: { pageType: ErrorPageType.unknown }        
+		data: { pageType: ErrorPageType.unknown }
 	},
 	{
-		path: "known-error",
+		path: 'known-error',
 		loadChildren: () => import('./known-error/known-error.module').then(o => o.KnownErrorModule),
-		data: { pageType: ErrorPageType.known }        
+		data: { pageType: ErrorPageType.known }
 	},
 	{
 		path: '',

@@ -1,11 +1,11 @@
-<mat-card class="example-card">      
-    <mat-card-header>
-        <mat-card-title>{{cardHome.title}}</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image class="img-class" [src]="cardHome.contentImage" alt="log analysis">
-    <mat-card-content>
-        <p>                
-            {{cardHome.contentParagraph}} 
-        </p>
-    </mat-card-content>            
-</mat-card>
+<div class="card">
+	<h3>{{cardHome.title}}</h3>
+	<div class="pictures">
+		<img [src]="cardHome.contentImage" alt="log analysis">
+	</div>
+	<div class="description">
+		<p>   
+			{{cardHome.contentParagraph}} 
+		</p>
+	</div>
+</div>

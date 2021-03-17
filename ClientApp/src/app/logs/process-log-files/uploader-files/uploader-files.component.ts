@@ -18,8 +18,8 @@ export class UploaderFilesComponent implements OnChanges, OnDestroy {
 	@Input() inSessionId: string;
 
 	isUploadCardExpanded: boolean;
-	uploadSaveUrl = "";
-	uploadRemoveUrl = "";
+	uploadSaveUrl = '';
+	uploadRemoveUrl = '';
 	myRestrictions: FileRestrictions = {
 		allowedExtensions: ['.log']
 	};
@@ -31,7 +31,7 @@ export class UploaderFilesComponent implements OnChanges, OnDestroy {
 	) { }
 
 	ngOnChanges() {
-		this.uploadSaveUrl = environment.localhostApp + environment.urlProcessLogApi + environment.methodUploadLogFiles + "?sessionId=" + this.inSessionId;
+		this.uploadSaveUrl = environment.localhostApp + environment.urlProcessLogApi + environment.methodUploadLogFiles + '?sessionId=' + this.inSessionId;
 		this.uploadRemoveUrl = environment.localhostApp + environment.urlProcessLogApi + environment.methodRemoveLogFiles;
 	}
 
@@ -40,28 +40,28 @@ export class UploaderFilesComponent implements OnChanges, OnDestroy {
 		this.destroyed$.complete();
 	}
 
-	onSuccessEventHandler(e: SuccessEvent) {  
-		console.log("onSuccessEventHandler",e);
+	onSuccessEventHandler(e: SuccessEvent) {
+		console.log('onSuccessEventHandler', e);
 	}
 
 	onErrorEventHandler(e: any) {
-		let fl = e.files[0];
-		let file = this.servProcessLogFiles.processingFiles.find(pr => pr.uploadedFile.uid == fl.uid) as FileProcess;
+		const fl = e.files[0];
+		const file = this.servProcessLogFiles.processingFiles.find(pr => pr.uploadedFile.uid == fl.uid) as FileProcess;
 		file.processState = ProcessState.failed;
-		file.errorMessage = e.response.error;      
+		file.errorMessage = e.response.error;
 	}
 
 	onSelectEventHandler(e: SelectEvent) {
 		e.files.forEach(file => {
-			let proccFile = new FileProcess({uploadedFile:file, sessionId: this.inSessionId});
+			const proccFile = new FileProcess({uploadedFile: file, sessionId: this.inSessionId});
 			this.servProcessLogFiles.processingFiles.push(proccFile);
 		});
 	}
 
 	onRemoveEventHandler(e: RemoveEvent): void {
 		e.files.forEach(file => {
-			let flIndex = this.servProcessLogFiles.processingFiles.findIndex(pr => pr.uploadedFile.uid == file.uid);
-			if(flIndex >= 0) {
+			const flIndex = this.servProcessLogFiles.processingFiles.findIndex(pr => pr.uploadedFile.uid == file.uid);
+			if (flIndex >= 0) {
 				this.servProcessLogFiles.processingFiles.splice(flIndex, 1);
 			}
 			this.servNotifications.deleProcessLogNotify(file.name);
@@ -72,22 +72,22 @@ export class UploaderFilesComponent implements OnChanges, OnDestroy {
 		this.dialog.open(UploadInfoDialogComponent, {
 			data: {
 				errorMessage: procFile.errorMessage
-			} 
+			}
 		});
 	}
 
 	onRunProcessFiles() {
-		this.servProcessLogFiles.startProcessLogFiles(this.inSessionId);  
+		this.servProcessLogFiles.startProcessLogFiles(this.inSessionId);
 		this.servProcessLogFiles.processingFiles.forEach(pr => {
-			if(pr.processState == ProcessState.default) {
+			if (pr.processState == ProcessState.default) {
 			pr.processState = ProcessState.processing;
-			}      
+			}
 		});
 	}
 
-	onRunProcessSinglFile(procFile: FileProcess) {    
-		this.servProcessLogFiles.startProcessSinglLogFile(procFile.uploadedFile.name);    
-		procFile.processState = ProcessState.processing;   
+	onRunProcessSinglFile(procFile: FileProcess) {
+		this.servProcessLogFiles.startProcessSinglLogFile(procFile.uploadedFile.name);
+		procFile.processState = ProcessState.processing;
 	}
 
 }

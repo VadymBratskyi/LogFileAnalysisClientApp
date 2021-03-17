@@ -26,7 +26,7 @@ export class QueryTreeService {
 	public buildTreeFields(logQuery: LogQuery[], pathNode?: string): TodoItemNode[] {
 		return logQuery.reduce<TodoItemNode[]>((accumulator, jobject) => {
 			const node = new TodoItemNode();
-			switch(jobject.objectType) {
+			switch (jobject.objectType) {
 				case LogObjectType.jobject:
 					node.name = `${jobject.key} { }`;
 					node.objectType = LogObjectType.jobject;

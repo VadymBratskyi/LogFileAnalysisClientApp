@@ -14,41 +14,41 @@ export class StatusesErrorObjectsService {
     private http: HttpClient
   ) { }
 
-  
+
   public getAllErrorStatusesData(): Observable<any> {
-    
+
     const url = environment.localhostApp + environment.urlStatusesApi + environment.methodGetAllErrorStatuses;
-      
-    return this.http.post(url, null)
+
+    return this.http.post(url, null, { withCredentials: true })
     .pipe(
-        map((response: any) => {        
+        map((response: any) => {
           return response;
       }),
       catchError((error: HttpErrorResponse) => {
-        console.error('getAllErrorStatusesData: ', error);       
+        console.error('getAllErrorStatusesData: ', error);
         return Observable.throw(error);
       })
     );
   }
 
   public saveNewErrorStatusData(model: ErrorStatusesModel): Observable<boolean> {
-    
+
     const url = environment.localhostApp + environment.urlStatusesApi + environment.methodSetNewErrorStatus;
-      
+
     const body = {
       code: +model.code,
       title: model.title,
       keyWords: model.keyWords,
       subStatusId: model.subStatusId
     } as ErrorStatusesModel;
-  
-    return this.http.post(url, body)
+
+    return this.http.post(url, body, { withCredentials: true })
     .pipe(
-        map((response: any) => {        
+        map((response: any) => {
           return true;
       }),
       catchError((error: HttpErrorResponse) => {
-        console.error('getAllErrorStatusesData: ', error);       
+        console.error('getAllErrorStatusesData: ', error);
         return Observable.throw(error);
       })
     );

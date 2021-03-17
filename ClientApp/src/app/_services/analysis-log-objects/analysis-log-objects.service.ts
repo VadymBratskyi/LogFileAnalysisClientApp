@@ -11,10 +11,10 @@ export class AnalysisLogObjectsService {
     private http: HttpClient
   ) { }
 
- 
 
- 
 
-  
+
+
+
 
 }

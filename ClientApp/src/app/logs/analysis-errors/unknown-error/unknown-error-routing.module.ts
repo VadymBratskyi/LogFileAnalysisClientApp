@@ -5,7 +5,7 @@ import { UnknownErrorComponent } from './unknown-error.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: UnknownErrorComponent
   }
 ];

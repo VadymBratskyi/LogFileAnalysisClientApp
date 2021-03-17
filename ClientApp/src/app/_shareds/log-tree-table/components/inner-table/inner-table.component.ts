@@ -7,16 +7,16 @@ import { LogTreeNode } from '@log_models';
   styleUrls: ['./inner-table.component.scss']
 })
 export class InnerTableComponent implements OnInit {
-  
-  @Input() data: LogTreeNode;
 
   constructor() { }
+
+  @Input() data: LogTreeNode;
+
+  displayedColumns: string[] = ['key', 'value'];
+  dataSource: LogTreeNode[];
 
   ngOnInit(): void {
     this.dataSource = [this.data];
   }
-
-  displayedColumns: string[] = ['key', 'value'];
-  dataSource: LogTreeNode[];
 
 }

@@ -22,8 +22,8 @@ import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
 	declarations: [
-		UnknownErrorComponent, 
-		UnknownErrorTableComponent, 
+		UnknownErrorComponent,
+		UnknownErrorTableComponent,
 		UnknownErrorSettingsComponent,
 		StatusDialogComponent,
 		ErrorStatusFormComponent,
@@ -34,7 +34,7 @@ import { MatTreeModule } from '@angular/material/tree';
 		CommonModule,
 		FormsModule,
 		UnknownErrorRoutingModule,
-		
+
 		/**material */
 		MatCardModule,
 		MatButtonModule,

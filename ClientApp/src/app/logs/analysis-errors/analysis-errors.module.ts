@@ -13,7 +13,7 @@ import { MatTabsModule } from '@angular/material/tabs';
   imports: [
     CommonModule,
     AnalysisErrorRoutingModule,
-    
+
     /**material */
     MatCardModule,
     MatTabsModule

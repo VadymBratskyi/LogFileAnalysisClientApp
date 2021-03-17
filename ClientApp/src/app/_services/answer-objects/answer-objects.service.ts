@@ -15,32 +15,32 @@ export class AnswerObjectsService {
   ) { }
 
   public getAllAnswersData(): Observable<any> {
-    
+
     const url = environment.localhostApp + environment.urlAnsweLogApi + environment.methodGetAllAnswers;
-      
-    return this.http.post(url, null)
+
+    return this.http.post(url, null, { withCredentials: true })
     .pipe(
-        map((response: any) => {        
+        map((response: any) => {
           return response;
       }),
       catchError((error: HttpErrorResponse) => {
-        console.error('getAllAnswersData: ', error);       
+        console.error('getAllAnswersData: ', error);
         return Observable.throw(error);
       })
     );
   }
 
   public saveNewAnswerData(model: Answer): Observable<string> {
-    
+
     const url = environment.localhostApp + environment.urlAnsweLogApi + environment.methodSetNewAnswer;
 
     return this.http.post(url, model)
     .pipe(
-        map((response: ResponseItem) => {        
+        map((response: ResponseItem) => {
           return response.id;
       }),
       catchError((error: HttpErrorResponse) => {
-        console.error('saveNewAnswerData: ', error);       
+        console.error('saveNewAnswerData: ', error);
         return Observable.throw(error);
       })
     );

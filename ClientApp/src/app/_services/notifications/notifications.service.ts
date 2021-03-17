@@ -27,7 +27,7 @@ export class NotificationsService {
 	public deleProcessLogNotify(fileName: string) {
 		const fileNotify = new ProcessLogNotify();
 		fileNotify.procesNotify = ProcessNotify.delete;
-		fileNotify.processLogNotify = { fileName: fileName } as LogNotify;
+		fileNotify.processLogNotify = { fileName } as LogNotify;
 		this.processedFileNotife.next(fileNotify);
 	}
 

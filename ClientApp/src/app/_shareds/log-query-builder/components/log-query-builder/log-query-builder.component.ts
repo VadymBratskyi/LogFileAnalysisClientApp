@@ -11,7 +11,7 @@ export class LogQueryBuilderComponent {
 	@Input() query: RuleSet;
 	@Input() config: QueryBuilderConfig;
 
-	allowRuleset = true; 
+	allowRuleset = true;
 	allowCollapse = true;
 
 }

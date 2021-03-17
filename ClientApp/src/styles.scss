@@ -12,8 +12,9 @@ body {
 	min-height: 30px !important;
 }
 
-/*card*/
-.mat-card-header-text{
-	width:inherit;
-	margin: 0!important;
+/*flex*/
+.log-container {
+	max-width: 1195px;
+	margin: 0 auto;
+	padding: 15px;
 }

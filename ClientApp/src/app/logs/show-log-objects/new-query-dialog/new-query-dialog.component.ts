@@ -15,7 +15,6 @@ import { ReplaySubject } from 'rxjs';
 	styleUrls: ['./new-query-dialog.component.scss'],
 })
 	export class NewQueryDialogComponent implements OnInit {
-	private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
 	constructor(
 		private _queryTreeService: QueryTreeService,
 		public dialogRef: MatDialogRef<NewQueryDialogComponent>,
@@ -26,6 +25,29 @@ import { ReplaySubject } from 'rxjs';
 		this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 	}
 
+	get isNotValidSettings(): boolean {
+		return this.queriesToSettins.length === 0 ||
+		this.queriesToSettins.findIndex(model => model.name === '') >= 0;
+	}
+	private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
+
+	/** Map from flat node to nested node. This helps us finding the nested node to be modified */
+	flatNodeMap = new Map<TodoItemFlatNode, TodoItemNode>();
+
+	/** Map from nested node to flattened node. This helps us to keep the same object for selection */
+	nestedNodeMap = new Map<TodoItemNode, TodoItemFlatNode>();
+
+	treeControl: FlatTreeControl<TodoItemFlatNode>;
+
+	treeFlattener: MatTreeFlattener<TodoItemNode, TodoItemFlatNode>;
+
+	dataSource: MatTreeFlatDataSource<TodoItemNode, TodoItemFlatNode>;
+
+	/** The selection for checklist */
+	checklistSelection = new SelectionModel<TodoItemFlatNode>(true /* multiple */);
+
+	queriesToSettins: QuerySettingsItem[] = [];
+
 	public onNoClick(): void {
 		this.dialogRef.close();
 	}
@@ -33,7 +55,7 @@ import { ReplaySubject } from 'rxjs';
 	private disableExistItems(existQueries: QueryConfig[], queryNodes: TodoItemNode[]) {
 		queryNodes.forEach(item => {
 			const existIndex = existQueries.findIndex(config => config.key === item.queryPath);
-			if(existIndex >= 0) {
+			if (existIndex >= 0) {
 				item.isExistQuery = true;
 			}
 			if (item.children && item.children.length > 0) {
@@ -53,23 +75,6 @@ import { ReplaySubject } from 'rxjs';
 		this.destroyed$.complete();
 	}
 
-	/** Map from flat node to nested node. This helps us finding the nested node to be modified */
-	flatNodeMap = new Map<TodoItemFlatNode, TodoItemNode>();
-
-	/** Map from nested node to flattened node. This helps us to keep the same object for selection */
-	nestedNodeMap = new Map<TodoItemNode, TodoItemFlatNode>();
-
-	treeControl: FlatTreeControl<TodoItemFlatNode>;
-
-	treeFlattener: MatTreeFlattener<TodoItemNode, TodoItemFlatNode>;
-
-	dataSource: MatTreeFlatDataSource<TodoItemNode, TodoItemFlatNode>;
-
-	/** The selection for checklist */
-	checklistSelection = new SelectionModel<TodoItemFlatNode>(true /* multiple */);
-
-	queriesToSettins: QuerySettingsItem[] = [];
-
 	getLevel = (node: TodoItemFlatNode) => node.level;
 
 	isExpandable = (node: TodoItemFlatNode) => node.expandable;
@@ -77,11 +82,6 @@ import { ReplaySubject } from 'rxjs';
 	getChildren = (node: TodoItemNode): TodoItemNode[] => node.children;
 
 	hasChild = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.expandable;
-
-	get isNotValidSettings(): boolean {
-		return this.queriesToSettins.length === 0 ||
-		this.queriesToSettins.findIndex(model => model.name === '') >= 0;
-	}
 
 	// hasNoContent = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.item === '';
 
@@ -145,7 +145,7 @@ import { ReplaySubject } from 'rxjs';
 				}
 			});
 		}
-		
+
 	}
 
   /** Toggle the to-do item selection. Select/deselect all the descendants node */
@@ -157,7 +157,7 @@ import { ReplaySubject } from 'rxjs';
 		: this.checklistSelection.deselect(...descendants);
 
 	 // Force update for the parent
-	descendants.forEach(child => this.checklistSelection.isSelected(child));
+	 descendants.forEach(child => this.checklistSelection.isSelected(child));
 		this._checkAllParentsSelection(node);
 		this._buildQuerySettings(isSelected);
 }
@@ -172,10 +172,10 @@ import { ReplaySubject } from 'rxjs';
 
 	/* Checks all the parents when a leaf node is selected/unselected */
 	private _checkAllParentsSelection(node: TodoItemFlatNode): void {
-		let query = {
+		const query = {
 			key : node.value,
 			parents : []
-		}
+		};
 		let parent: TodoItemFlatNode | null = this._getParentNode(node);
 		while (parent) {
 			query.parents.unshift(parent.value);
@@ -186,7 +186,7 @@ import { ReplaySubject } from 'rxjs';
 	}
 
   /** Check root node checked state and change it accordingly */
-	private _checkRootNodeSelection(node: TodoItemFlatNode): void {  
+	private _checkRootNodeSelection(node: TodoItemFlatNode): void {
 		const nodeSelected = this.checklistSelection.isSelected(node);
 		const descendants = this.treeControl.getDescendants(node);
 		const descAllSelected = descendants.length > 0 && descendants.every(child => {

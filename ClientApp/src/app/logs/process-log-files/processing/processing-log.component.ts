@@ -11,7 +11,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class ProcessingLogComponent implements OnInit {
 
-	private destroyed$: ReplaySubject<boolean> = new ReplaySubject();	
+	private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
 	public complatedFiles: LogNotify[] = [];
 	public isProcessCardExpanded: boolean;
 
@@ -23,16 +23,16 @@ export class ProcessingLogComponent implements OnInit {
 		this.servNotifications.processedFileNotification
 			.pipe(takeUntil(this.destroyed$))
 			.subscribe((logNotify: ProcessLogNotify) => {
-				switch(logNotify.procesNotify) {
+				switch (logNotify.procesNotify) {
 					case ProcessNotify.add:
 						const isNotExist = this.complatedFiles.findIndex(item => item.fileName === logNotify.processLogNotify.fileName);
-						if(isNotExist < 0) {
+						if (isNotExist < 0) {
 							this.complatedFiles.push(logNotify.processLogNotify);
 						}
 						break;
 					case ProcessNotify.delete:
 						const isExistIndex = this.complatedFiles.findIndex(item => item.fileName === logNotify.processLogNotify.fileName);
-						if(isExistIndex >= 0) {
+						if (isExistIndex >= 0) {
 							this.complatedFiles.splice(isExistIndex, 1);
 						}
 						break;

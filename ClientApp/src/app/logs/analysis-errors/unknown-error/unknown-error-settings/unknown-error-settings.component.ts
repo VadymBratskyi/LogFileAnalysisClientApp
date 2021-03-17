@@ -40,7 +40,7 @@ export class UnknownErrorSettingsComponent implements OnDestroy {
 		return {
 			unKnownErrorId: this.unKnownError.objectId,
 			statusErrorId: this.answer.statusId,
-			answerId: answerId
+			answerId
 		} as KnownErrorConfig;
 	}
 
@@ -48,21 +48,21 @@ export class UnknownErrorSettingsComponent implements OnDestroy {
 		this.dialog.open(StatusDialogComponent, {
 			data: {}
 		}).afterClosed().subscribe((result: ErrorStatusesModel) => {
-			if(result) {
+			if (result) {
 				this._setAnswer(result);
-			}      
+			}
 		});
 	}
 
 	public onSaveAnswer() {
-		if(!this.answer || !this.answer.text) {
+		if (!this.answer || !this.answer.text) {
 			return;
 		}
-			this.answer.unKnownErrorId = this.unKnownError.objectId;
-			this.answerObjectsService.saveNewAnswerData(this.answer)
+		this.answer.unKnownErrorId = this.unKnownError.objectId;
+		this.answerObjectsService.saveNewAnswerData(this.answer)
 			.pipe(takeUntil(this.destroyed$))
 			.subscribe(result => {
-				let config = this._generateKnownConfig(result);
+				const config = this._generateKnownConfig(result);
 				this.setSettings.emit(config);
 			});
 	}

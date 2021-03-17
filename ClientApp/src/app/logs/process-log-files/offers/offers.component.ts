@@ -14,14 +14,14 @@ import { DetailsOfferDialogComponent } from './details-offer-dialog/details-offe
 	styleUrls: ['./offers.component.scss']
 })
 export class OffersComponent implements OnInit, OnDestroy, AfterViewInit {
-	
+
 	private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
-	
+
 	private offersData: OfferNotify[] = [];
 	public isProcessCardExpanded: boolean;
 	public displayTableColumns = ['statusCode', 'errorMessage', 'answerMessage', 'actions' ];
-	public pageSizeOptions = [10, 25, 50, 100];	
-	
+	public pageSizeOptions = [10, 25, 50, 100];
+
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	public dataSource = new MatTableDataSource<OfferNotify>(this.offersData);
 
@@ -39,15 +39,15 @@ export class OffersComponent implements OnInit, OnDestroy, AfterViewInit {
 		this.servNotifications.offerNotification
 			.pipe(takeUntil(this.destroyed$))
 			.subscribe(offers => {
-				if(offers) {
+				if (offers) {
 					offers.forEach(item => {
 						const isExist = this.offersData.findIndex(offer => offer.errorMessage == item.errorMessage);
-						if(isExist < 0) {
+						if (isExist < 0) {
 							this.offersData.push(item);
 						}
 					});
 				}
-			})
+			});
 	}
 
 	ngAfterViewInit() {

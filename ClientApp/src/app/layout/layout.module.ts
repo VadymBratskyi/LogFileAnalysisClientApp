@@ -15,7 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     LayoutComponent,
-    FooterLayoutComponent        
+    FooterLayoutComponent
   ],
   imports: [
     CommonModule,

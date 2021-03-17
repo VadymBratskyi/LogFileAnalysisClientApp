@@ -12,7 +12,7 @@ export const environment = {
   urlErrorLogApi: 'api/ErrorLog/',
   urlStatusesApi: 'api/Statuses/',
   urlAnsweLogApi: 'api/AnsweLog/',
-  
+
   methodCreateProcessLogSession: 'CreateProcessLogSession',
   methodUploadLogFiles: 'UploadLogFiles',
   methodRemoveLogFiles: 'RemoveLogFiles',

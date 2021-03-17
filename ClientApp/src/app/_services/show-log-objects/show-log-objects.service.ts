@@ -19,7 +19,7 @@ export class ShowLogObjectsService {
 	constructor(private http: HttpClient) { }
 	public getAccesQueryForConfig(): Observable<QueryBuilderConfig> {
 		const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetAccessFieldsForQuery;
-		return this.http.get(url)
+		return this.http.get(url, { withCredentials: true })
 		.pipe(
 			map((response: QueryBuilderConfig) => {
 				return response;
@@ -33,7 +33,7 @@ export class ShowLogObjectsService {
 
 	public getQueryDataConfig(): Observable<QueryConfig[]> {
 		const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetQueryBuilderConfig;
-		return this.http.get(url)
+		return this.http.get(url, { withCredentials: true })
 		.pipe(
 			map((response: QueryConfig[]) => {
 				return response;
@@ -47,7 +47,7 @@ export class ShowLogObjectsService {
 
 	public addNewQueryDataConfig(queries: QueryConfig[]): Observable<any> {
 		const url = environment.localhostApp + environment.urlShowLogApi + environment.methodAddNewItemToQueryBuilder;
-		return this.http.post(url, queries)
+		return this.http.post(url, queries, { withCredentials: true })
 		.pipe(
 			map((response: QueryConfig[]) => {
 				return response;
@@ -63,7 +63,7 @@ export class ShowLogObjectsService {
 		const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetAllLogsData;
 		const body = new LogFilterParameters(logTableModel.skip, logTableModel.take);
 		body.rulesset = rulesSet;
-		return this.http.post(url, body)
+		return this.http.post(url, body, { withCredentials: true })
 		.pipe(
 			map((response: LogsDataGrid) => {
 				return response;
@@ -78,7 +78,7 @@ export class ShowLogObjectsService {
 
 	public runLogsFilter(queryRules: RuleSet): Observable<LogsDataGrid> {
 		const url = environment.localhostApp + environment.urlShowLogApi + 'GetLogsDataByFilter';
-		return this.http.post(url, queryRules)
+		return this.http.post(url, queryRules, { withCredentials: true })
 		.pipe(
 			map((response: LogsDataGrid) => {
 				return response;

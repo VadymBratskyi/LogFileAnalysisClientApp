@@ -17,8 +17,8 @@ import { LogTreeTableModule } from '@log_shareds';
   imports: [
     CommonModule,
     LogTreeTableModule,
-    KnownErrorRoutingModule,   
-    
+    KnownErrorRoutingModule,
+
     /**material */
     MatCardModule,
     MatButtonModule,

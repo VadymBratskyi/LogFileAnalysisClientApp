@@ -23,15 +23,15 @@ import { UploadInfoDialogComponent } from './uploader-files/upload-info-dialog/u
 
 @NgModule({
 	declarations: [
-		ProcessLogFilesComponent, 
-		UploaderFilesComponent, 
+		ProcessLogFilesComponent,
+		UploaderFilesComponent,
 		ProcessingLogComponent, OffersComponent, DetailsOfferDialogComponent, UploadInfoDialogComponent
 	],
 	imports: [
 		CommonModule,
 		ProcessLogFilesRoutingModule,
 		FormsModule,
-		
+
 		/**material */
 		MatCardModule,
 		MatButtonModule,
