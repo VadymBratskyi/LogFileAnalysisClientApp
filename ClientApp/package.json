@@ -27,7 +27,7 @@
 		"@progress/kendo-angular-common": "^1.2.3",
 		"@progress/kendo-angular-l10n": "^2.0.2",
 		"@progress/kendo-angular-upload": "^6.0.2",
-		"@progress/kendo-theme-default": "^4.23.0",
+		"@progress/kendo-theme-material": "^3.31.0",
 		"angular2-query-builder": "^0.6.2",
 		"moment": "^2.29.1",
 		"rxjs": "~6.6.3",

@@ -25,7 +25,7 @@
 	background-color: #f6f6f6;
 	border-bottom: 1px solid rgba(0,0,0,0.08);
 	color: #656565;  
-	padding: 8px;
+	padding: 6px;
 }
 
 .process-file-status {
@@ -56,4 +56,16 @@
 
 mat-icon {
 	color: #00d000;
+}
+
+.file-upload {
+	display: flex;
+
+	.uploader {
+		flex-basis: 100%;
+	}
+
+	.actions {
+		
+	}
 }
