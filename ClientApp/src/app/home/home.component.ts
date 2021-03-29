@@ -38,18 +38,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 		this.servProcessLogFiole.CreateProcessLogSession()
 		.pipe(takeUntil(this.destroyed$))
 		.subscribe(sessionId => {
-			this.router.navigate([card.rouuterLink, sessionId]);
+			this.router.navigate([card.routerLink, sessionId]);
 		});
 	}
 
 	public onShowLogObjects(card: CardHome) {
-		this.router.navigate([card.rouuterLink]);
+		this.router.navigate([card.routerLink]);
 	}
 
 	public onAnlysisLogObjects(card: CardHome) {
-		this.router.navigate([card.rouuterLink]);
+		this.router.navigate([card.routerLink]);
 	}
-
 
 	private CreateProcessLogFileCard(): CardHome {
 		const card = new CardHome();
@@ -58,7 +57,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 		card.contentImage = 'assets/images/log_analysis.png';
 		card.contentParagraph = 'Система приймає log-файли, для подальшого аналізу їх місткості. Знайшовши співпадання за шаблоном'
 		+ 'система створює обьєкти, які зберігаються у базу знаннь. ';
-		card.rouuterLink = '/process-log-files';
+		card.routerLink = '/process-log-files';
 		return card;
 	}
 
@@ -69,7 +68,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 		card.contentImage = 'assets/images/query_builder.png';
 		card.contentParagraph = 'Система надає можливість перглянути в зручному вигляді усі проаналізовані об\'єкти у log-файлі, '
 		+ 'а також система надасть варінти побудови фільтрів для запиту.';
-		card.rouuterLink = '/show-log-objects';
+		card.routerLink = '/show-log-objects';
 		return card;
 	}
 
@@ -80,7 +79,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 		card.contentImage = 'assets/images/study_system.png';
 		card.contentParagraph = 'Система обирає усі Log-об\'єкти з помилковим статусом і дяє Вам можливість їх обробити'
 		+ 'і навчити систему для подальшого автоматичного реагування. ';
-		card.rouuterLink = '/analysis-errors';
+		card.routerLink = '/analysis-errors';
 		return card;
 	}
 

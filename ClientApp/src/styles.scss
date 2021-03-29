@@ -12,8 +12,18 @@ body {
 	min-height: 30px !important;
 }
 
+.k-upload .k-upload-files .k-file {
+	padding: 5px;
+}
+
+.k-upload .k-upload-files {
+	max-height: none;
+	overflow-y: unset;
+}
+
 /*flex*/
 .log-container {
 	margin: 0 auto;
-	padding: 15px;
+	height: 100%;
+	padding: 0 15px;
 }

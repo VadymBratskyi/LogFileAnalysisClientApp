@@ -6,7 +6,6 @@
 	box-shadow: 0 0 10px -1px #000000;
 	display: flex;
 	flex-direction: column;
-	margin-top: 25px;	
 	border-radius: 5px;
 
 	h3 {
@@ -47,4 +46,12 @@
 	transform: scale(1.1);
 	background-color: #00000080;
 	color: #fff;   
+}
+
+@media (max-width: 991px) {
+
+	.card {
+		margin-top: 25px;
+	}
+
 }

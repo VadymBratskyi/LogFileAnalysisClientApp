@@ -32,26 +32,24 @@
 					</kendo-upload>
             </div>
             <div class="actions">
-					<div class="run-process-files">
-						<div class="process-header">
-							<button class="k-button" (click)="onRunProcessFiles()">Обробити усі</button>
-						</div>
-						<div *ngFor="let process of servProcessLogFiles.processingFiles" class="process-file-status">   
-							<div [ngSwitch]="process.processState">                            
-									<div *ngSwitchCase="0" class="error-block">
-										<span (click)="onShowDetailsError(process)" class="error-txt">Помилка</span>
-									</div>
-									<div *ngSwitchCase="1" class="spinner-block">
-										<mat-spinner [diameter]="22" style="left: 50%;"></mat-spinner>
-									</div>
-									<div *ngSwitchCase="2" class="complate-block">
-										<mat-icon aria-hidden="false" aria-label="Оброблено">done_outline</mat-icon>
-									</div>
-									<div *ngSwitchCase="3">
-										<button class="k-button" (click)="onRunProcessSinglFile(process)" [disabled]="process.uploadedFile.state != 3">Обробити</button>
-									</div>
+					<div class="process-header">
+						<button class="k-button" (click)="onRunProcessFiles()">Обробити усі</button>
+					</div>
+					<div *ngFor="let process of servProcessLogFiles.processingFiles" class="process-file-status">   
+						<div [ngSwitch]="process.processState">                            
+								<div *ngSwitchCase="0" class="error-block">
+									<button class="k-button error-txt" (click)="onShowDetailsError(process)">Помилка</button>
 								</div>
-						</div>
+								<div *ngSwitchCase="1" class="spinner-block">
+									<mat-spinner [diameter]="22" style="left: 50%;"></mat-spinner>
+								</div>
+								<div *ngSwitchCase="2" class="complate-block">
+									<mat-icon aria-hidden="false" aria-label="Оброблено">done_outline</mat-icon>
+								</div>
+								<div *ngSwitchCase="3">
+									<button class="k-button" (click)="onRunProcessSinglFile(process)" [disabled]="process.uploadedFile.state != 3">Обробити</button>
+								</div>
+							</div>
 					</div>
 				</div>
 			</div>
