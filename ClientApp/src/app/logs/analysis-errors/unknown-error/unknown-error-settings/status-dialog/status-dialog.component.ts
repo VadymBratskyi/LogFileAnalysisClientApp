@@ -22,13 +22,6 @@ export class StatusDialogComponent implements OnInit{
 
 	public selectedItem: ErrorStatusesModel;
 
-	get getTreeColumnClass(): string {
-		if (!this.showAddNewStatus) {
-			return `col-md-12`;
-		}
-		return `col-md-6`;
-	}
-
 	constructor(
 		private statusesErrorObjectsService: StatusesErrorObjectsService,
 		public dialogRef: MatDialogRef<StatusDialogComponent>,

@@ -1,11 +1,12 @@
-.status-tree, .status-form {
-	width: 100%;
-	height: 100%;
-}
-mat-dialog-content {
-	padding-top: 2px;
-	padding-bottom: 2px;
-}
+// .status-tree, .status-form {
+// 	width: 100%;
+// 	height: 100%;
+// }
+
+// mat-dialog-content {
+// 	padding-top: 2px;
+// 	padding-bottom: 2px;
+// }
 
 .dialog-header {
 	display: flex;
@@ -24,4 +25,21 @@ mat-dialog-content {
 				font-size: 21px;
 		}
 	}
+}
+
+.status-block {
+	display: flex;
+
+	.status-tree {
+		width: 100%;
+	}
+
+	.status-form {
+		width: 100%;
+		margin: 10px;
+	}
+}
+
+.selected-status {
+	margin: 10px;
 }

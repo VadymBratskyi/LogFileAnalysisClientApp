@@ -1,5 +1,4 @@
 <mat-card class="example-card">
-	<mat-card-header class="header-toolbox">
 		<div class="action-button">
 				<button mat-stroked-button [class.selected]="isQueryBuilderCardExpanded" [matTooltip]="!isQueryBuilderCardExpanded ? 'Вікрити фільтр' : 'Сховати фільтр'" (click)="isQueryBuilderCardExpanded = !isQueryBuilderCardExpanded">
 					<mat-icon aria-hidden="false" aria-label="Filter_list icon">filter_list</mat-icon>
@@ -14,7 +13,6 @@
 					<mat-icon aria-hidden="false" aria-label="Play_arrow icon">settings</mat-icon>
 				</button>
 		</div>
-	</mat-card-header>
 	<mat-card-content [style.display]="isQueryBuilderCardExpanded ? 'block' : 'none'">
 		<app-log-query-builder *ngIf="loadedConfig" [query]="showLogObjectsService.showLogQueryRules" [config]="config"></app-log-query-builder>
 	</mat-card-content>
