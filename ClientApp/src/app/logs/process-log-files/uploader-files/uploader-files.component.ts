@@ -85,7 +85,7 @@ export class UploaderFilesComponent implements OnChanges, OnDestroy {
 		});
 	}
 
-	onRunProcessSinglFile(procFile: FileProcess) {
+  onRunProcessSingleFile(procFile: FileProcess) {
 		this.servProcessLogFiles.startProcessSinglLogFile(procFile.uploadedFile.name);
 		procFile.processState = ProcessState.processing;
 	}

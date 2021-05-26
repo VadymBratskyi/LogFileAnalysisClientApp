@@ -35,8 +35,8 @@
 					<div class="process-header">
 						<button class="k-button" (click)="onRunProcessFiles()">Обробити усі</button>
 					</div>
-					<div *ngFor="let process of servProcessLogFiles.processingFiles" class="process-file-status">   
-						<div [ngSwitch]="process.processState">                            
+					<div *ngFor="let process of servProcessLogFiles.processingFiles" class="process-file-status">
+						<div [ngSwitch]="process.processState">
 								<div *ngSwitchCase="0" class="error-block">
 									<button class="k-button error-txt" (click)="onShowDetailsError(process)">Помилка</button>
 								</div>
@@ -47,11 +47,11 @@
 									<mat-icon aria-hidden="false" aria-label="Оброблено">done_outline</mat-icon>
 								</div>
 								<div *ngSwitchCase="3">
-									<button class="k-button" (click)="onRunProcessSinglFile(process)" [disabled]="process.uploadedFile.state != 3">Обробити</button>
+									<button class="k-button" (click)="onRunProcessSingleFile(process)" [disabled]="process.uploadedFile.state != 3">Обробити</button>
 								</div>
 							</div>
 					</div>
 				</div>
 			</div>
-		</mat-card-content> 
+		</mat-card-content>
 </mat-card>

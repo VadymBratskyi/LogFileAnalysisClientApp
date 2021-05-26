@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import { LogQueryRuleSet, LogsDataGrid, LogsDtoModel, LogTableState, LogTreeModel } from '@log_models';
 import { ShowLogObjectsService } from '@log_services';
 import { of, ReplaySubject } from 'rxjs';
@@ -19,6 +19,7 @@ import { catchError, takeUntil } from 'rxjs/operators';
 	],
 })
 export class LogObjectsTableComponent implements OnInit, OnDestroy {
+  @ViewChild('paginator') paginator: MatPaginator;
 	private _destroyed$: ReplaySubject<boolean> = new ReplaySubject();
 	private _expandableColumns = ['request', 'response'];
 	public dataSource: LogsDtoModel[];
@@ -34,7 +35,9 @@ export class LogObjectsTableComponent implements OnInit, OnDestroy {
 	public isLoadingResults: boolean;
 	public isRateLimitReached: boolean;
 	public expandedElement: boolean;
+
 	constructor(private showLogObjectsService: ShowLogObjectsService) { }
+
 	private _onLoadData(dataState: LogTableState, logQueryRuleSet: LogQueryRuleSet) {
 		this.isLoadingResults = true;
 		this.showLogObjectsService.getAllLogs(dataState, logQueryRuleSet)
@@ -50,6 +53,7 @@ export class LogObjectsTableComponent implements OnInit, OnDestroy {
 			this.isRateLimitReached = false;
 			this.dataSource = logsData.data;
 			this.resultsLength = logsData.countLogs;
+				// this.paginator.firstPage();
 		});
 	}
 
