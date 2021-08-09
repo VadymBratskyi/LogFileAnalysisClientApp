@@ -37,7 +37,12 @@ export const environment = {
   methodSetNewAnswer: 'SetNewAnswer',
 
   methodPostTestValue: 'PostTestValue',
-  methodGetTestValue: 'GetTestValue'
+  methodGetTestValue: 'GetTestValue',
+
+  locales: ['en-US', 'uk-UA'],
+//   defaultLanguage: 'uk-UA'
+  defaultLanguage: 'en-US'
+
 };
 
 /*

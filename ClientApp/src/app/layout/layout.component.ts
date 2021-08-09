@@ -4,6 +4,8 @@ import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ProcessLogFilesService } from '@log_services';
 import { MatSidenav } from '@angular/material/sidenav';
+import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-layout',
@@ -18,8 +20,11 @@ export class LayoutComponent implements OnInit {
 
   constructor(
     private router: Router,
+	 private translateService: TranslateService,
     private servProcessLogFiole: ProcessLogFilesService
-  ) { }
+  ) {
+	 translateService.use(environment.defaultLanguage);
+   }
 
 
   ngOnInit() {

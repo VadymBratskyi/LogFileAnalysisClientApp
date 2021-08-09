@@ -1,7 +1,7 @@
 <mat-card class="example-card">
 		<mat-card-header>
 			<mat-card-title class="padd-title-header link-text" (click)="isUploadCardExpanded = !isUploadCardExpanded">
-				Завантаження Logs-файлів
+				{{ 'ProcesLogFilesPage.UploadLogsSection.Title' | translate }}
 			</mat-card-title>
 		</mat-card-header>
 		<mat-card-content [style.display]="isUploadCardExpanded ? 'none' : 'block'">
@@ -16,29 +16,29 @@
 						(remove)="onRemoveEventHandler($event)"
 						(success)="onSuccessEventHandler($event)"
 						(error)="onErrorEventHandler($event)">
-							<kendo-upload-messages select="Обрати файл"
-								invalidFileExtension="Недопустимий тип файла"
-								uploadSelectedFiles="Завантажити обрані файли"
-								clearSelectedFiles="Очистити вибрані файли"
-								cancel="Відмінити"
-								dropFilesHere="Перетягніть файли сюди"
-								headerStatusUploaded="Завантажено"
-								headerStatusUploading="Завантажується"
-								invalidFiles="Недопустимі файли"
-								invalidMaxFileSize="Недопустимий розмір файлу"
-								remove="Видалити"
-								retry="Спробувати ще раз">
+							<kendo-upload-messages select="{{ 'ProcesLogFilesPage.UploadLogsSection.BtnSelectFiles' | translate }}"
+								invalidFileExtension="{{ 'ProcesLogFilesPage.UploadLogsSection.UploaderInvalidFileExtension' | translate }}"
+								uploadSelectedFiles="{{ 'ProcesLogFilesPage.UploadLogsSection.UploaderUploadSelectedFiles' | translate }}"
+								clearSelectedFiles="{{ 'ProcesLogFilesPage.UploadLogsSection.UploaderClearSelectedFiles' | translate }}"
+								cancel="{{ 'ProcesLogFilesPage.UploadLogsSection.UploaderCancel' | translate }}"
+								dropFilesHere="{{ 'ProcesLogFilesPage.UploadLogsSection.UploaderDropFilesHere' | translate }}"
+								headerStatusUploaded="{{ 'ProcesLogFilesPage.UploadLogsSection.UploaderHeaderStatusUploaded' | translate }}"
+								headerStatusUploading="{{ 'ProcesLogFilesPage.UploadLogsSection.UploaderHeaderStatusUploading' | translate }}"
+								invalidFiles="invalid files"
+								invalidMaxFileSize="{{ 'ProcesLogFilesPage.UploadLogsSection.UploaderInvalidMaxFileSize' | translate }}"
+								remove="{{ 'ProcesLogFilesPage.UploadLogsSection.UploaderRemove' | translate }}"
+								retry="{{ 'ProcesLogFilesPage.UploadLogsSection.UploaderRetry' | translate }}">
 							</kendo-upload-messages>
 					</kendo-upload>
             </div>
             <div class="actions">
 					<div class="process-header">
-						<button class="k-button" (click)="onRunProcessFiles()">Обробити усі</button>
+						<button class="k-button" (click)="onRunProcessFiles()">{{ 'ProcesLogFilesPage.UploadLogsSection.BtnProcessAll' | translate }}</button>
 					</div>
 					<div *ngFor="let process of servProcessLogFiles.processingFiles" class="process-file-status">
 						<div [ngSwitch]="process.processState">
 								<div *ngSwitchCase="0" class="error-block">
-									<button class="k-button error-txt" (click)="onShowDetailsError(process)">Помилка</button>
+									<button class="k-button error-txt" (click)="onShowDetailsError(process)">{{ 'ProcesLogFilesPage.UploadLogsSection.BtnError' | translate }}</button>
 								</div>
 								<div *ngSwitchCase="1" class="spinner-block">
 									<mat-spinner [diameter]="22" style="left: 50%;"></mat-spinner>
@@ -47,7 +47,7 @@
 									<mat-icon aria-hidden="false" aria-label="Оброблено">done_outline</mat-icon>
 								</div>
 								<div *ngSwitchCase="3">
-									<button class="k-button" (click)="onRunProcessSingleFile(process)" [disabled]="process.uploadedFile.state != 3">Обробити</button>
+									<button class="k-button" (click)="onRunProcessSingleFile(process)" [disabled]="process.uploadedFile.state != 3">{{ 'ProcesLogFilesPage.UploadLogsSection.BtnProcess' | translate }}</button>
 								</div>
 							</div>
 					</div>

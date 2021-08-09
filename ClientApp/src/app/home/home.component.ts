@@ -4,6 +4,8 @@ import { ProcessLogFilesService } from '@log_services';
 import { Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'environments/environment';
 
 @Component({
 	selector: 'app-home',
@@ -18,13 +20,16 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private router: Router,
+		private translateService: TranslateService,
 		private servProcessLogFiole: ProcessLogFilesService
-	) { }
+	) {
+		translateService.use(environment.defaultLanguage);
+	 }
 
 	ngOnInit() {
 		this.homeCards = [
 		this.CreateProcessLogFileCard(),
-		this.CreateShowLogObjectsCard(),
+		this.CreateViewLogObjectsCard(),
 		this.CreateAnalysisLogObjectsCard()
 		];
 	}
@@ -52,34 +57,49 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 	private CreateProcessLogFileCard(): CardHome {
 		const card = new CardHome();
-		card.title = 'Обробка Log-файлів.';
-		card.subTitle = 'Збереження об\'єктів для аналізу.';
-		card.contentImage = 'assets/images/log_analysis.png';
-		card.contentParagraph = 'Система приймає log-файли, для подальшого аналізу їх місткості. Знайшовши співпадання за шаблоном'
-		+ 'система створює обьєкти, які зберігаються у базу знаннь. ';
-		card.routerLink = '/process-log-files';
+		this.translateService.get([
+			"HomePage.ProcessLogFileCard.Title",
+			"HomePage.ProcessLogFileCard.ContentParagraph",
+		])
+		.pipe(takeUntil(this.destroyed$))
+		.subscribe(translations  => {
+			card.title = translations["HomePage.ProcessLogFileCard.Title"];
+			card.contentImage = 'assets/images/log_analysis.png';
+			card.contentParagraph = translations["HomePage.ProcessLogFileCard.ContentParagraph"];
+			card.routerLink = '/process-log-files';
+		});
 		return card;
 	}
 
-	private CreateShowLogObjectsCard(): CardHome {
+	private CreateViewLogObjectsCard(): CardHome {
 		const card = new CardHome();
-		card.title = 'Перегляд Log-об\'єктів.';
-		card.subTitle = 'Перегляд об\'єктів і їх фільтрація.';
-		card.contentImage = 'assets/images/query_builder.png';
-		card.contentParagraph = 'Система надає можливість перглянути в зручному вигляді усі проаналізовані об\'єкти у log-файлі, '
-		+ 'а також система надасть варінти побудови фільтрів для запиту.';
-		card.routerLink = '/show-log-objects';
+		this.translateService.get([
+			"HomePage.ViewLogObjectsCard.Title",
+			"HomePage.ViewLogObjectsCard.ContentParagraph",
+		])
+		.pipe(takeUntil(this.destroyed$))
+		.subscribe(translations  => {
+			card.title = translations["HomePage.ViewLogObjectsCard.Title"];
+			card.contentImage = 'assets/images/query_builder.png';
+			card.contentParagraph = translations["HomePage.ViewLogObjectsCard.ContentParagraph"];
+			card.routerLink = '/show-log-objects';
+		});
 		return card;
 	}
 
 	private CreateAnalysisLogObjectsCard(): CardHome {
 		const card = new CardHome();
-		card.title = 'Аналіз помилок.';
-		card.subTitle = 'Навчання системи.';
-		card.contentImage = 'assets/images/study_system.png';
-		card.contentParagraph = 'Система обирає усі Log-об\'єкти з помилковим статусом і дяє Вам можливість їх обробити'
-		+ 'і навчити систему для подальшого автоматичного реагування. ';
-		card.routerLink = '/analysis-errors';
+		this.translateService.get([
+			"HomePage.ErrorAnalysisCard.Title",
+			"HomePage.ErrorAnalysisCard.ContentParagraph",
+		])
+		.pipe(takeUntil(this.destroyed$))
+		.subscribe(translations  => {
+			card.title = translations["HomePage.ErrorAnalysisCard.Title"];
+			card.contentImage = 'assets/images/study_system.png';
+			card.contentParagraph = translations["HomePage.ErrorAnalysisCard.ContentParagraph"];
+			card.routerLink = '/analysis-errors';
+		});		
 		return card;
 	}
 

@@ -4,6 +4,8 @@ import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { NotificationsService, ProcessLogFilesService } from '@log_services';
 import { LogNotify, ProcessState, FileProcess, OfferNotify, ProcessLogNotify, ProcessNotify } from '@log_models';
+import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'environments/environment';
 
 @Component({
 	selector: 'app-process-log-files',
@@ -22,9 +24,12 @@ export class ProcessLogFilesComponent implements OnInit, OnDestroy {
 
 	constructor(
 		public servProcessLogFiles: ProcessLogFilesService,
+		private translateService: TranslateService,
 		public servNotifications: NotificationsService,
 		private activatedRoute: ActivatedRoute
-	) { }
+	) {
+		translateService.use(environment.defaultLanguage);
+	}
 
 	private _progressAnalisysFiles() {
 		this.servProcessLogFiles.onProcessNotification

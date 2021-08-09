@@ -1,10 +1,10 @@
 <div class="dialog-header">
-	<h1 mat-dialog-title>Перегляд рішення</h1>
+	<h1 mat-dialog-title>{{ 'ProcesLogFilesPage.AnswerSection.DetailsDialogOffer.Title' | translate }}</h1>
 </div>
 	<mat-dialog-content class="mat-typography">
 	<div class="status">
 		<mat-form-field class="example-full-width offer-field">
-			<mat-label>Статус помилки</mat-label>
+			<mat-label>{{ 'ProcesLogFilesPage.AnswerSection.DetailsDialogOffer.StstusError' | translate }}</mat-label>
 			<input matInput [value]="data.statusCode" readonly="true">
 		</mat-form-field>
 	</div>
@@ -13,7 +13,7 @@
 			<mat-expansion-panel (opened)="errorPanelOpenState = true" (closed)="errorPanelOpenState = false">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
-						Помилка
+						{{ 'ProcesLogFilesPage.AnswerSection.DetailsDialogOffer.Error' | translate }}
 					</mat-panel-title>
 				</mat-expansion-panel-header>
 				<div>
@@ -26,7 +26,7 @@
 											(closed)="answersPanelOpenState = false">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
-						Варіанти рішень
+						{{ 'ProcesLogFilesPage.AnswerSection.DetailsDialogOffer.AnswersCases' | translate }}
 					</mat-panel-title>
 				</mat-expansion-panel-header>
 				<div>
@@ -39,5 +39,5 @@
 	</div>
 	</mat-dialog-content>
 	<mat-dialog-actions align="end">
-	<button mat-button mat-dialog-close>Закрити</button>
+	<button mat-button mat-dialog-close>{{ 'ProcesLogFilesPage.AnswerSection.DetailsDialogOffer.BtnClose' | translate }}</button>
 </mat-dialog-actions>

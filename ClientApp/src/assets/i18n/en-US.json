@@ -1,0 +1,69 @@
+{
+	"Layout": {
+		"Title": "LogHelper",
+		"SideNav": {
+			"MainPage": "Main page",
+			"ProcessLogFile": "Log files processing",
+			"ViewLogObjects": "Log objects revision",
+			"ErrorAnalysis": "Error analysis"
+		}
+	},
+	"HomePage": {
+		"ProcessLogFileCard": {
+			"Title": "Log files processing",
+			"ContentParagraph": "The system accepts log files to further analysis of their capacity. Having found the match by the template, the system creates objects which are saved in the knowledge base."
+		},
+		"ViewLogObjectsCard":{
+			"Title": "Log objects revision",
+			"ContentParagraph": "The system provides the ability to conveniently view all the analyzed objects in the log file, and the system will provide options for creating filters for the request."
+		},
+		"ErrorAnalysisCard": {
+			"Title": "Error analysis",
+			"ContentParagraph": "The system selects all Log objects with erroneous status and gives the opportunity to process them and customize the system for further automatic response."
+		}
+	},
+	"ProcesLogFilesPage": {
+		"UploadLogsSection": {
+			"Title": "Upload logs",
+			"BtnSelectFiles": "Select files",
+			"UploaderInvalidFileExtension": "Invalid file type",
+			"UploaderUploadSelectedFiles": "Download selected files",
+			"UploaderClearSelectedFiles": "Clear selected files",
+			"UploaderCancel": "Cancel",
+			"UploaderDropFilesHere": "Drag files here",
+			"UploaderHeaderStatusUploaded": "Downloaded",
+			"UploaderHeaderStatusUploading": "Loading",
+			"UploaderInvalidFiles": "Invalid files",
+			"UploaderInvalidMaxFileSize": "Invalid file size",
+			"UploaderRemove": "Remove",
+			"UploaderRetry": "Please try again",
+			"BtnProcessAll": "Process all",
+			"BtnError": "Error",
+			"BtnProcess": "Process file",
+			"DialogError": {
+				"Title": "Error message",
+				"BtnClose": "Close"
+			}	
+		},
+		"ProcessedFileSection": {
+			"Title": "Processed Logs files"
+		},
+		"AnswerSection": {
+			"TitleExistOffer": "Possible decisions for errors",
+			"TitleNotExistOffer": "not found",
+			"TableOffer": {
+				"ColumnStatusTitle": "Status",
+				"ColumnErrorTitle": "Error",
+				"ColumnAnswerTitle": "Possible decisions"
+			},
+			"DetailsDialogOffer": {
+				"Title": "View decisions",
+				"StstusError": "Status error",
+				"Error": "Error",
+				"AnswersCases": "Decisions options",
+				"BtnClose": "Close"
+			}			
+			
+		}
+	}
+}

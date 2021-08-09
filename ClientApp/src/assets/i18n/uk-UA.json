@@ -1,0 +1,69 @@
+{
+	"Layout": {
+		"Title": "Log Аналітик",
+		"SideNav": {
+			"MainPage": "Головна",
+			"ProcessLogFile": "Обробка Log-файлів",
+			"ViewLogObjects": "Перегляд Log-об'єктів",
+			"ErrorAnalysis": "Аналіз помилок"
+		}
+	},
+	"HomePage": {
+		"ProcessLogFileCard": {
+			"Title": "Обробка Log-файлів",
+			"ContentParagraph": "Система приймає log-файли, для подальшого аналізу їх місткості. Знайшовши співпадання за шаблоном система створює обьєкти, які зберігаються у базу знаннь."
+		},
+		"ViewLogObjectsCard":{
+			"Title": "Перегляд Log-об'єктів",
+			"ContentParagraph": "Система надає можливість перглянути в зручному вигляді усі проаналізовані об'єкти у log-файлі, а також система надасть варіанти побудови фільтрів для запиту."
+		},
+		"ErrorAnalysisCard": {
+			"Title": "Аналіз помилок",
+			"ContentParagraph": "Система обирає усі Log-об'єкти з помилковим статусом і дяє Вам можливість їх обробити і навчити систему для подальшого автоматичного реагування"
+		}
+	},
+	"ProcesLogFilesPage": {
+		"UploadLogsSection": {
+			"Title": "Завантаження Logs-файлів",
+			"BtnSelectFiles": "Обрати файли",
+			"UploaderInvalidFileExtension": "Недопустимий тип файла",
+			"UploaderUploadSelectedFiles": "Завантажити обрані файли",
+			"UploaderClearSelectedFiles": "Очистити вибрані файли",
+			"UploaderCancel": "Відмінити",
+			"UploaderDropFilesHere": "Перетягніть файли сюди",
+			"UploaderHeaderStatusUploaded": "Завантажено",
+			"UploaderHeaderStatusUploading": "Завантажується",
+			"UploaderInvalidFiles": "Недопустимі файли",
+			"UploaderInvalidMaxFileSize": "Недопустимий розмір файлу",
+			"UploaderRemove": "Видалити",
+			"UploaderRetry": "Спробувати ще раз",
+			"BtnProcessAll": "Обробити усі файли",
+			"BtnError": "Помилка",
+			"BtnProcess": "Обробити файл",
+			"DialogError": {
+				"Title": "Текс помилки",
+				"BtnClose": "Закрити"
+			}
+		},
+		"ProcessedFileSection": {
+			"Title": "Оброблені Logs-файли"
+		},
+		"AnswerSection": {
+			"TitleExistOffer": "Можливі рішення для знайдених помилок",
+			"TitleNotExistOffer": "не виявлено",
+			"TableOffer": {
+				"ColumnStatusTitle": "Статус",
+				"ColumnErrorTitle": "Помилка",
+				"ColumnAnswerTitle": "Можливі рішення"
+			},
+			"DetailsDialogOffer": {
+				"Title": "Перегляд рішення",
+				"StstusError": "Статус помилки",
+				"Error": "Помилка",
+				"AnswersCases": "Варіанти рішень",
+				"BtnClose": "Закрити"
+			}			
+			
+		}
+	}
+}

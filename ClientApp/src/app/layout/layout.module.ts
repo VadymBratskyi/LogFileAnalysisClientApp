@@ -10,6 +10,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MissingTranslationService } from 'app/translation/missing-translation-service';
+import { HttpLoaderFactory } from 'app/translation/http-loader-factory';
+import { HttpClient } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,6 +24,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   imports: [
     CommonModule,
     LayoutRoutingModule,
+	 TranslateModule.forRoot({
+		missingTranslationHandler: {
+			provide: MissingTranslationHandler,
+			useClass: MissingTranslationService
+		},
+		loader: {
+			provide: TranslateLoader,
+			useFactory: HttpLoaderFactory,
+			deps: [HttpClient]
+		}
+	 }),
 
     /**material */
     MatToolbarModule,

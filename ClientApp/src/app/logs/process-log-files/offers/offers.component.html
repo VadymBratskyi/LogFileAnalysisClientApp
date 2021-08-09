@@ -1,7 +1,7 @@
 <mat-card class="example-card">
 	<mat-card-header>
 		<mat-card-title class="padd-title-header link-text" (click)="isProcessCardExpanded = !isProcessCardExpanded">
-			Можливі рішення для знайдених помилок {{offersLength == 0 ? 'не виявлено' : ''}}
+			{{ 'ProcesLogFilesPage.AnswerSection.TitleExistOffer' | translate }}	<span *ngIf="offersLength == 0">{{'ProcesLogFilesPage.AnswerSection.TitleNotExistOffer' | translate }} </span>		
 		</mat-card-title>
 	</mat-card-header>
 	<mat-card-content [style.display]="isProcessCardExpanded ? 'none' : 'block'">
@@ -12,17 +12,17 @@
 					class="mat-elevation-z8" style="width: 100%;">
 
 					<ng-container matColumnDef="statusCode">
-						<th mat-header-cell *matHeaderCellDef>Статус</th>
+						<th mat-header-cell *matHeaderCellDef>{{ 'ProcesLogFilesPage.AnswerSection.TableOffer.ColumnStatusTitle' | translate }}</th>
 						<td mat-cell *matCellDef="let row">{{row.statusCode}}</td>
 					</ng-container>
 	
 					<ng-container matColumnDef="errorMessage">
-						<th mat-header-cell *matHeaderCellDef>Помилка</th>
+						<th mat-header-cell *matHeaderCellDef>{{ 'ProcesLogFilesPage.AnswerSection.TableOffer.ColumnErrorTitle' | translate }}</th>
 						<td mat-cell *matCellDef="let row">{{row.errorMessage}}</td>
 					</ng-container>
 	
 					<ng-container matColumnDef="answerMessage">
-						<th mat-header-cell *matHeaderCellDef>Можливі рішення</th>
+						<th mat-header-cell *matHeaderCellDef>{{ 'ProcesLogFilesPage.AnswerSection.TableOffer.ColumnAnswerTitle' | translate }}</th>
 						<td mat-cell *matCellDef="let row">{{row.answerMessage}}</td>
 					</ng-container>
 

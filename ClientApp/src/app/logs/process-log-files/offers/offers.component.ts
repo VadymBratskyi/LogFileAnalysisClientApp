@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { LogTableState, OfferNotify } from '@log_models';
+import { OfferNotify } from '@log_models';
 import { NotificationsService, ProcessLogFilesService } from '@log_services';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

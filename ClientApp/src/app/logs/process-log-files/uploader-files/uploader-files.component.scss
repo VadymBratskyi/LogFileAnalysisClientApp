@@ -28,7 +28,7 @@
 			border: 1px solid rgba(0,0,0,0.08);
 			background-color: #f6f6f6;
 			color: #656565;
-			padding: 8px;
+			padding: 6px;
 		}
 
 		.process-file-status {
@@ -36,19 +36,19 @@
 			border-right: 1px solid rgba(0,0,0,0.08);
 			border-bottom: 1px solid rgba(0,0,0,0.08);
 			color: #656565;
-			padding: 6px;
+			padding: 5px;
 
 			.error-txt {
 				color: #ff0000;
 			}
 
 			.spinner-block {
-				padding: 4px;
+				padding: 6px;
 			}
 
 			mat-icon {
 				color: #00d000;
-				padding: 2px;
+				padding: 6px;
 			}
 		}
 	}
