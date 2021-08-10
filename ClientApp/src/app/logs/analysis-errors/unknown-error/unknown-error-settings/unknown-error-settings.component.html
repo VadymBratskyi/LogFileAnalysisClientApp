@@ -1,7 +1,7 @@
 <div class="error-settings"> 
 		<p>
 			<mat-form-field class="example-full-width">
-					<mat-label>Статус</mat-label>
+					<mat-label>{{'AnalysisErorPage.UnKnownErrorSection.ErrorSettings.StatusError' | translate}}</mat-label>
 					<input  matInput [readonly]="true" [required]="true" [value]="geStatusCodeTitle"/>
 					<button
 						mat-icon-button
@@ -14,11 +14,11 @@
 		</p>
 		<p>
 			<mat-form-field appearance="outline">
-					<mat-label>Варіант рішення</mat-label>
+					<mat-label>{{'AnalysisErorPage.UnKnownErrorSection.ErrorSettings.AnswersCases' | translate}}</mat-label>
 					<textarea matInput placeholder="Задати рішення" [(ngModel)]="answer.text"></textarea>
 			</mat-form-field>
 		</p>
 		<p align="end">
-			<button mat-stroked-button (click)="onSaveAnswer()">Зберегти</button>
+			<button mat-stroked-button (click)="onSaveAnswer()">{{'AnalysisErorPage.UnKnownErrorSection.ErrorSettings.BtnSave' | translate}}</button>
 		</p>
 </div>

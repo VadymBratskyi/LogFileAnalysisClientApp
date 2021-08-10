@@ -3,7 +3,7 @@
 		*ngIf="isLoadingResults || isRateLimitReached">
 	<mat-spinner *ngIf="isLoadingResults"></mat-spinner>
 	<div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
-		Сервіс тимчасово недоступний.
+		{{'AnalysisErorPage.UnKnownErrorSection.DataTable.LoadDataError' | translate}}
 	</div>
 	</div>
 
@@ -14,17 +14,17 @@
 			class="mat-elevation-z8">
 			
 			<ng-container matColumnDef="messageId">
-					<th mat-header-cell *matHeaderCellDef>Індекс</th>
+					<th mat-header-cell *matHeaderCellDef>{{'AnalysisErorPage.UnKnownErrorSection.DataTable.ColumnIndexTitle' | translate}}</th>
 					<td mat-cell *matCellDef="let row">{{row.messageId}}</td>
 			</ng-container>
 
 			<ng-container matColumnDef="message">
-					<th mat-header-cell *matHeaderCellDef>Помилка</th>
+					<th mat-header-cell *matHeaderCellDef>{{'AnalysisErorPage.UnKnownErrorSection.DataTable.ColumnErrorTitle' | translate}}</th>
 					<td mat-cell *matCellDef="let row">{{row.message}}</td>
 			</ng-container>
 
 			<ng-container matColumnDef="count">
-					<th mat-header-cell *matHeaderCellDef>Кількість</th>
+					<th mat-header-cell *matHeaderCellDef>{{'AnalysisErorPage.UnKnownErrorSection.DataTable.ColumnCountTitle' | translate}}</th>
 					<td mat-cell *matCellDef="let row">{{row.count}}</td>
 			</ng-container>
 

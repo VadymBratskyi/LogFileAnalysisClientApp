@@ -1,5 +1,5 @@
 <div class="dialog-header">
-	<h1 mat-dialog-title>Задати статус</h1>
+	<h1 mat-dialog-title>{{'AnalysisErorPage.UnKnownErrorSection.ErrorSettings.DialogSettings.Title' | translate}}</h1>
 	<button mat-icon-button  *ngIf="!showAddNewStatus"
 		aria-label="add new error status" 
 		matTooltip="Додати новий"
@@ -27,6 +27,6 @@
 	</div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-	<button mat-button mat-dialog-close>Ні</button>
-	<button mat-button [mat-dialog-close]="selectedItem" cdkFocusInitial>Так</button>
+	<button mat-button mat-dialog-close>{{'AnalysisErorPage.UnKnownErrorSection.ErrorSettings.DialogSettings.BtnYes' | translate}}</button>
+	<button mat-button [mat-dialog-close]="selectedItem" cdkFocusInitial>{{'AnalysisErorPage.UnKnownErrorSection.ErrorSettings.DialogSettings.BtnNo' | translate}}</button>
 </mat-dialog-actions>

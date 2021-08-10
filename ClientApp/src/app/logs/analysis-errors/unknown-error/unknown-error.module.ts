@@ -19,6 +19,11 @@ import { ErrorStatusFormComponent } from './unknown-error-settings/status-dialog
 import { ErrorStatusesTreeComponent } from './unknown-error-settings/status-dialog/error-statuses-tree/error-statuses-tree.component';
 import { SelectedStatusComponent } from './unknown-error-settings/status-dialog/selected-status/selected-status.component';
 import { MatTreeModule } from '@angular/material/tree';
+import { MissingTranslationHandler, TranslateModule } from '@ngx-translate/core';
+import { MissingTranslationService } from 'app/translation/missing-translation-service';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpLoaderFactory } from 'app/translation/http-loader-factory';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
 	declarations: [
@@ -34,6 +39,17 @@ import { MatTreeModule } from '@angular/material/tree';
 		CommonModule,
 		FormsModule,
 		UnknownErrorRoutingModule,
+		TranslateModule.forRoot({
+			missingTranslationHandler: {
+				provide: MissingTranslationHandler,
+				useClass: MissingTranslationService
+			},
+			loader: {
+				provide: TranslateHttpLoader,
+				useFactory: HttpLoaderFactory,
+				deps: [HttpClient]
+			}
+		}),
 
 		/**material */
 		MatCardModule,

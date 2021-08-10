@@ -65,5 +65,49 @@
 			}			
 			
 		}
+	},
+	"AnalysisErorPage": {
+		"NavPanel": {
+			"UnknownpanelTitle": "Невідомі помилки",
+			"KnownPanelTitle": "Відомі помилки"
+		},
+		"KnownErrorSection": {
+			"DataTable": {
+				"LoadDataError": "Сервіс тимчасово недоступний.",
+				"ColumnErrorTitle": "Текст помилки",
+				"ColumnCountTitle": "Кількість помилок"
+			}
+		},
+		"UnKnownErrorSection": {
+			"DataTable": {
+				"LoadDataError": "Сервіс тимчасово недоступний.",
+				"ColumnIndexTitle": "Індекс",
+				"ColumnErrorTitle": "Текст помилки",
+				"ColumnCountTitle": "Кількість помилок"
+			},
+			"ErrorSettings": {
+				"StatusError": "Статус помилки",
+				"AnswersCases": "Варіант рішення",
+				"BtnSave": "Зберегти",
+				"DialogSettings": {
+					"Title": "Задати статус",
+					"BtnYes": "Так",
+					"BtnNo": "Ні",
+					"SelectedStatus": {
+						"Title": "Обраний статус",
+						"NameTitle": "Назва",
+						"CodeTitle": "Код",
+						"KeyWordsTitle": "Ключові слова"
+					},
+					"CreatingStatus": {
+						"Title": "Новий статус",
+						"NameTitle": "Назва",
+						"CodeTitle": "Код",
+						"SubstatusTitle": "Підстатус",
+						"KeyWordsTitle":"Ключові слова"
+					}
+				}
+			}
+		}
 	}
 }

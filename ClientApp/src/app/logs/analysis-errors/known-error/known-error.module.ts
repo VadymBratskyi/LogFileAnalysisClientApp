@@ -10,21 +10,35 @@ import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { LogTreeTableModule } from '@log_shareds';
-
+import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MissingTranslationService } from 'app/translation/missing-translation-service';
+import { HttpLoaderFactory } from 'app/translation/http-loader-factory';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
-  declarations: [KnownErrorComponent, KnownErrorTableComponent],
-  imports: [
-    CommonModule,
-    LogTreeTableModule,
-    KnownErrorRoutingModule,
+	declarations: [KnownErrorComponent, KnownErrorTableComponent],
+	imports: [
+		CommonModule,
+		LogTreeTableModule,
+		KnownErrorRoutingModule,
+		TranslateModule.forRoot({
+			missingTranslationHandler: {
+			provide: MissingTranslationHandler,
+			useClass: MissingTranslationService
+		},
+		loader: {
+			provide: TranslateLoader,
+			useFactory: HttpLoaderFactory,
+			deps: [HttpClient]
+		}
+	}),
 
-    /**material */
-    MatCardModule,
-    MatButtonModule,
-    MatTableModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule
-  ]
+		/**material */
+		MatCardModule,
+		MatButtonModule,
+		MatTableModule,
+		MatProgressSpinnerModule,
+		MatPaginatorModule
+	]
 })
 export class KnownErrorModule { }

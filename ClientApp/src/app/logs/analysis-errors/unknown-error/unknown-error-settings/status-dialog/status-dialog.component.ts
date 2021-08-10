@@ -64,16 +64,16 @@ export class StatusDialogComponent implements OnInit{
 	}
 
 	onTreeSelectedItem(statusModel: ErrorStatusesModel) {
-			this.selectedItem = statusModel;
-			this._initSubStatus(this.newErrorStatusesModel);
+		this.selectedItem = statusModel;
+		this._initSubStatus(this.newErrorStatusesModel);
 	}
 
 	onSaveNewStatus(newModel: ErrorStatusesModel) {
 		if (newModel) {
 			this.statusesErrorObjectsService.saveNewErrorStatusData(newModel)
 			.pipe(takeUntil(this.destroyed$))
-      .subscribe(res => {
-			this.onLoadData();
+			.subscribe(res => {
+				this.onLoadData();
 			});
 		}
 		this.showAddNewStatus = false;

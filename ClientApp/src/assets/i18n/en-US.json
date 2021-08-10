@@ -65,5 +65,49 @@
 			}			
 			
 		}
+	},
+	"AnalysisErorPage": {
+		"NavPanel": {
+			"UnknownpanelTitle": "Unknown errors",
+			"KnownPanelTitle": "Known errors"
+		},
+		"KnownErrorSection": {
+			"DataTable": {
+				"LoadDataError": "Now the service is unavailable.",
+				"ColumnErrorTitle": "Error text",
+				"ColumnCountTitle": "Count"
+			}
+		},
+		"UnKnownErrorSection": {
+			"DataTable": {
+				"LoadDataError": "Now the service is unavailable.",
+				"ColumnIndexTitle": "Index",
+				"ColumnErrorTitle": "Error text",
+				"ColumnCountTitle": "Count"
+			},
+			"ErrorSettings": {
+				"StatusError": "Status error",
+				"AnswersCases": "Decisions options",
+				"BtnSave": "Save",
+				"DialogSettings": {
+					"Title": "Set status",
+					"BtnYes": "Yes",
+					"BtnNo": "No",
+					"SelectedStatus": {
+						"Title": "Selected status",
+						"NameTitle": "Name",
+						"CodeTitle": "Code",
+						"KeyWordsTitle": "Key words"
+					},
+					"CreatingStatus": {
+						"Title": "New status",
+						"NameTitle": "Name",
+						"CodeTitle": "Code",
+						"SubstatusTitle": "Substatus",
+						"KeyWordsTitle":"Key words"
+					}
+				}
+			}
+		}
 	}
 }
